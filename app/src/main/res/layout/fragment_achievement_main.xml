@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AchievementMain"
+    android:layout_margin="30dp"
+    android:orientation="vertical"
+    android:gravity="bottom">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ach_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"/> //목표 리스트 띄우는 부분, recyclerview(vertical) 연결
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/flower_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"/> //꽃 띄우는 부분, recyclerview(horizontal) 연결
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/my_garden"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+
+</LinearLayout>
