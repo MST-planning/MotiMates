@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="horizontal">
+
+<!--    임시 로고로 넣어놨습니다. 이름을 tempLogo로 했다가
+            나중에 코드 수정하기 귀찮아서 이미지만 바꾸려고 Logo로 지었어요
+            변경 가능하나, 디폴트 이미지는 앱 로고로 넣으면 좋을 것 같아서요!-->
+    <ImageView
+        android:id="@+id/image"
+        android:background="@drawable/image_box_border"
+        android:padding="5dp"
+        android:src="@drawable/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="제목"/>
+
+    <EditText
+        android:id="@+id/title"
+        android:background="@drawable/text_box_border"
+        android:padding="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="제목을 입력해주세요"
+        android:maxLines="1"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="소개"/>
+
+        <EditText
+            android:id="@+id/content"
+            android:background="@drawable/text_box_border"
+            android:padding="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:maxLines="3"
+            android:hint="간단히 소개해주세요" />
+    </LinearLayout>
+</LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="기간 설정"/>
+
+    <RadioGroup
+        android:id="@+id/period"
+        android:background="@drawable/text_box_border"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/month"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:text="@string/a_month"/>
+
+        <RadioButton
+            android:id="@+id/year"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:text="@string/a_year"/>
+
+        <RadioButton
+            android:id="@+id/every"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:text="@string/every_day" />
+
+        <RadioButton
+            android:id="@+id/custom"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="직접 설정"/>
+    </RadioGroup>
+
+    <DatePicker
+        android:id="@+id/calendar"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:datePickerMode="calendar"/>
+</LinearLayout>

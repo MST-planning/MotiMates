@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">motimates</string>
+
+<!--    목표 종료-->
+    <string name="a_month">30day</string>
+    <string name="a_year">1year</string>
+    <string name="every_day">every day</string>
 </resources>
