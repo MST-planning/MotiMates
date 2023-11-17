@@ -15,7 +15,7 @@
             변경 가능하나, 디폴트 이미지는 앱 로고로 넣으면 좋을 것 같아서요!-->
     <ImageView
         android:id="@+id/image"
-        android:background="@drawable/image_box_border"
+        android:background="@drawable/layout_edge"
         android:padding="5dp"
         android:src="@drawable/logo"
         android:layout_width="150dp"
@@ -32,6 +32,7 @@
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/MainColor"
         android:text="제목"/>
 
     <EditText
@@ -40,11 +41,13 @@
         android:padding="2dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/MainColor"
         android:hint="제목을 입력해주세요"
         android:maxLines="1"/>
 
     <TextView
         android:layout_marginTop="10dp"
+        android:textColor="@color/MainColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="소개"/>
@@ -56,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:maxLines="3"
+            android:textColorHint="@color/MainColor"
             android:hint="간단히 소개해주세요" />
     </LinearLayout>
 </LinearLayout>
@@ -63,6 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:textColor="@color/MainColor"
         android:text="기간 설정"/>
 
     <RadioGroup
@@ -100,10 +105,9 @@
             android:text="직접 설정"/>
     </RadioGroup>
 
-    <DatePicker
-        android:id="@+id/calendar"
-        android:padding="20dp"
+    <TextView
+        android:background="@drawable/text_under"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:datePickerMode="calendar"/>
+        android:layout_height="50dp"/>
 </LinearLayout>
