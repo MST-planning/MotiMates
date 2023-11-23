@@ -5,35 +5,38 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.example.motimates.databinding.AchItemViewBinding
+import com.example.motimates.databinding.FragmentAchievementMainBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+class ViewHolder(val binding: AchItemViewBinding) : RecyclerView.ViewHolder(binding.root)
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AchievementMain.newInstance] factory method to
- * create an instance of this fragment.
- */
+class Adapter(val datas: MutableList<String>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    override fun getItemCount(): Int = datas.size
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
+        ViewHolder(
+            AchItemViewBinding.inflate(LayoutInflater.from(parent.context), parent,
+            false))
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val binding= (holder as ViewHolder).binding
+        binding.achContent.text = datas[position]
+    }
+}
 class AchievementMain : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
+    lateinit var binding: FragmentAchievementMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        binding= FragmentAchievementMainBinding.inflate(layoutInflater, container, false)
         return inflater.inflate(R.layout.fragment_achievement_main, container, false)
     }
 

@@ -9,7 +9,6 @@
     android:layout_margin="30dp"
     android:gravity="bottom">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/target_content"
         android:layout_width="match_parent"
@@ -42,13 +41,13 @@
             android:layout_height="300dp"
             android:layout_gravity="center"
             android:layout_margin="15dp"
-            android:src="@drawable/example_image" />
+            android:src="@drawable/example_image" /> //카메라앱, 갤러리앱 연동하기! ch15 참고할 것
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/upload_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

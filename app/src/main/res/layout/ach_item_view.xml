@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ach_item_root"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"> // 목표 달성 메인화면의 아이템 레이아웃
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/layout_edge">
+        <TextView
+            android:id="@+id/ach_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:text="예시 문장입니다."
+            android:textStyle="bold"
+            android:textSize="18sp"/> // 묙표의 내용이 들어가는 곳
+    </LinearLayout>
+</LinearLayout>
