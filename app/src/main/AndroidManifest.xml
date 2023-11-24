@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Motimates"
         tools:targetApi="31">
         <activity
+            android:name=".AddPurpose"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
