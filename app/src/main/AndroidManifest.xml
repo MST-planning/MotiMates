@@ -5,6 +5,17 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 <!--    알림 권한 받기-->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    
+    <!-- 카메라, 갤러리 권한 받기 -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
 
     <application
         android:allowBackup="true"
@@ -21,6 +32,16 @@
             android:exported="false" />
         <activity
             android:name=".AddPurpose"
+            android:name=".MyFlower"
+            android:exported="false" />
+        <activity
+            android:name=".MyGarden"
+            android:exported="false" />
+        <activity
+            android:name=".AchievementMain"
+            android:exported="false" />
+        <activity
+            android:name=".Achievement"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -30,13 +51,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- 카메라 앱 프로바이더 -->
-        <!-- // file_paths.xml을 만들어야 하는 듯 -->
+        </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="app"
             android:exported="false"
             android:grantUriPermissions="true">
+
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
