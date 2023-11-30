@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <!-- 카메라, 갤러리 권한 받기-->
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-
+    <!-- 카메라, 갤러리 권한 받기 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+<!--    알림 권한 받기-->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
         android:allowBackup="true"
@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Motimates"
         tools:targetApi="31">
         <activity
+            android:name=".NotificationPush"
+            android:exported="false" />
+        <activity
             android:name=".AddPurpose"
             android:exported="false" />
         <activity
@@ -27,18 +30,18 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-<!--        카메라 앱 프로바이더-->
-<!--        // file_paths.xml을 만들어야 하는 듯-->
+        </activity> <!-- 카메라 앱 프로바이더 -->
+        <!-- // file_paths.xml을 만들어야 하는 듯 -->
         <provider
-            android:authorities="app"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="app"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
+
         <activity android:name=".MypageActivity" />
     </application>
 
