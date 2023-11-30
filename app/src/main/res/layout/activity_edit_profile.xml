@@ -24,8 +24,6 @@
         android:background="#CCCCCC"
         android:layout_marginBottom="16dp"/>
 
-
-
     <!-- 프로필 사진 -->
     <ImageView
         android:id="@+id/profileImageView"
@@ -121,5 +119,4 @@
             android:layout_height="wrap_content"
             android:text="취소"/>
     </LinearLayout>
-
-</LinearLayout>
+    </LinearLayout>
