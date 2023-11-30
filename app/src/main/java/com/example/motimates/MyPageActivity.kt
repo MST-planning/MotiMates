@@ -26,7 +26,7 @@ class MyPageActivity : AppCompatActivity() {
         // 목표 추가하기 버튼 클릭 이벤트
         binding.addGoalButton.setOnClickListener {
             // 목표 추가하기 버튼 클릭 시 처리
-            val intent = Intent(this, Achievement::class.java)
+            val intent = Intent(this, AddPurpose::class.java)
             startActivity(intent)
         }
 
