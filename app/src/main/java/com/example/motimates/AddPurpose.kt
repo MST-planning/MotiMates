@@ -5,6 +5,7 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.app.NotificationCompat
 import com.example.motimates.databinding.AddPurposeBinding
@@ -44,7 +45,7 @@ class AddPurpose : AppCompatActivity() {
 
                     //선택한 날짜 텍스트로 보여주기
                     binding.customText.visibility = View.VISIBLE
-                    binding.customText.text = "${datetext}까지"
+                    binding.customText.text = datetext
                 }
             }
                                                     }
@@ -64,7 +65,9 @@ class AddPurpose : AppCompatActivity() {
 
     private val date = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
         calendar.set(year, month, dayOfMonth)
+        Log.d("listener", "${calendar}")
         datetext = "${calendar.get(Calendar.YEAR)}년 ${calendar.get(Calendar.MONTH)}월 ${calendar.get(Calendar.DATE)}일까지"
+        Log.d("listener", "${datetext}")
     }
 
     private val time = TimePickerDialog.OnTimeSetListener{ view, hour, minute ->
