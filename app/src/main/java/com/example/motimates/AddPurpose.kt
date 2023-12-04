@@ -18,9 +18,11 @@ class AddPurpose : AppCompatActivity() {
     private var times = mutableListOf<List<Int>>()
     var datetext = "string"
 
+    private lateinit var binding: AddPurposeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = AddPurposeBinding.inflate(layoutInflater)
+        binding = AddPurposeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.period.setOnCheckedChangeListener { group, checkedId ->
@@ -43,12 +45,10 @@ class AddPurpose : AppCompatActivity() {
                     //DateaPicker 화면에 생성 -> calendar과 datetext에 선택 날짜 저장
                     DatePickerDialog(this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)).show()
 
-                    //선택한 날짜 텍스트로 보여주기
-                    binding.customText.visibility = View.VISIBLE
-                    binding.customText.text = datetext
-                }
-            }
-                                                    }
+//                    //선택한 날짜 텍스트로 보여주기
+//                    binding.customText.visibility = View.VISIBLE
+//                    binding.customText.text = datetext
+                } } }
 
         binding.save.setOnClickListener{
             val intent = Intent(this, MyPageActivity::class.java)
@@ -60,14 +60,17 @@ class AddPurpose : AppCompatActivity() {
             TimePickerDialog(this, time, 12, 0,true).show()
 
             //선택한 시간 목록 보여주기
-        }
-    }
+        } }
 
     private val date = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
         calendar.set(year, month, dayOfMonth)
         Log.d("listener", "${calendar}")
         datetext = "${calendar.get(Calendar.YEAR)}년 ${calendar.get(Calendar.MONTH)}월 ${calendar.get(Calendar.DATE)}일까지"
         Log.d("listener", "${datetext}")
+
+        //선택한 날짜 텍스트로 보여주기
+        binding.customText.visibility = View.VISIBLE
+        binding.customText.text = datetext
     }
 
     private val time = TimePickerDialog.OnTimeSetListener{ view, hour, minute ->
