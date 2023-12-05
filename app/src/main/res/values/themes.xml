@@ -6,6 +6,11 @@
         <item name="colorPrimary">@color/MainColor</item>
         <item name="colorPrimaryVariant">@color/SubColor</item>
     </style>
-
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- 테마에 따라 변경할 수 있는 속성들을 여기에 추가 -->
+        <item name="colorPrimary">@color/MainColor</item>
+        <item name="colorPrimaryDark">@color/SubColor</item>
+        <item name="colorAccent">@color/background</item>
+    </style>
     <style name="Theme.Motimates" parent="Base.Theme.Motimates" />
 </resources>

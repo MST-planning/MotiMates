@@ -1,0 +1,8 @@
+<!-- res/drawable/rounded_rectangle.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="8dp" /> <!-- 조절 가능한 반지름 값 -->
+    <solid android:color="#9d9d9d" /> <!-- 배경 색상 -->
+    <!-- 세로 높이 조절 -->
+    <size android:height="30dp" />
+    <size android:width="50dp" />
+</shape>

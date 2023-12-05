@@ -1,31 +1,30 @@
-//package com.example.motimates
-//
-//// GoalListActivity.kt
-//import android.os.Bundle
-//import android.widget.ArrayAdapter
-//import androidx.appcompat.app.AppCompatActivity
-//import com.example.motimates.databinding.GoalListBinding
-//
-//class GoalListActivity : AppCompatActivity() {
-//
-//    private lateinit var binding: GoalListBinding
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        binding = GoalListBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//
-//        // 가상의 목표 데이터 생성 (실제 데이터로 교체 할건지, 더미 데이터 쓸건지)
-//        val goals = listOf(
-//            Goal("목표1", "2023-12-31", R.drawable.goal_image1),
-//            Goal("목표2", "2024-01-31", R.drawable.goal_image2),
-//            // 추가적인 목표들...
-//        )
-//
-//        // 목표 목록을 표시할 어댑터 생성
-//        val adapter = ArrayAdapter(this, R.layout.goal_list_item, goals)
-//
-//        // ListView에 어댑터 설정
-//        binding.goalListView.adapter = adapter
-//    }
-//}
+package com.example.motimates
+
+import android.content.Intent
+import android.os.Bundle
+import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
+
+class GoalListActivity : AppCompatActivity(){
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_goal_list)
+
+        // 목표를 누를 때의 이벤트 처리
+        val goalLayout = findViewById<LinearLayout>(R.id.goalLayout1) // 목표 레이아웃 ID
+
+        goalLayout.setOnClickListener {
+            // 선택한 목표의 정보
+            val selectedGoalTitle = "물 2L 이상 마시기"
+            val selectedGoalDetails = "- 30 days challenge\n- 매일 오전 8시마다, 팝업"
+
+            // 목표 상세 화면으로 이동하는 인텐트 생성
+            val intent = Intent(this, ActivityInProgressGoalActivity::class.java)
+            intent.putExtra("goalTitle", selectedGoalTitle)
+            intent.putExtra("goalDetails", selectedGoalDetails)
+
+            // 목표 상세 화면으로 이동
+            startActivity(intent)
+        }
+    }
+}
