@@ -14,8 +14,6 @@
     <string name="cancel">취소</string>
     <!--    꽃밭-->
     <string name="my_garden">나의 꽃밭으로 가기</string>
-    <string name="upload_image">인증 사진 올리기</string>
-    <string name="modify_image">인증 사진 수정하기</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

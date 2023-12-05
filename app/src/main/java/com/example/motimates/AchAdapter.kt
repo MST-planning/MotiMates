@@ -1,6 +1,6 @@
 package com.example.motimates
 
-import android.util.Log
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,9 +20,10 @@ class AchAdapter(val datas: MutableList<String>): RecyclerView.Adapter<RecyclerV
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding= (holder as AchViewHolder).binding
         binding.achContent.text = datas[position]
-        binding.achContent.setOnClickListener {
-            Log.d("로그 처리", "목표 선택됨: ${datas[position]}")
-        } // 목표 리스트 바인딩과 로그처리
+        binding.achContent.setOnClickListener(){
+            val intent= Intent(binding.achContent.context, Achievement::class.java)
+            binding.achContent.context.startActivity(intent) //목표 리스트 리사이클러 뷰 클릭 이벤트 처리(목표 수행 페이지로 이동)
+        }
     }
 }
 
