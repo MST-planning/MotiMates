@@ -1,4 +1,3 @@
-<!-- res/layout/goal_layout.xml -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -11,38 +10,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="진행 중인 목표"
-        android:textSize="30dp"
-        android:textColor="@android:color/holo_green_dark"
+        android:textSize="25dp"
+        android:textColor="#85C567"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"/>
 
-    <!-- 회색 구분선 -->
     <View
-        android:layout_width="match_parent"
+        android:layout_width="330dp"
         android:layout_height="1dp"
-        android:background="#CCCCCC"/>
+        android:background="#85C567"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="50dp"/>
 
     <!-- 달성 중인 목표 제목 -->
     <TextView
+        android:id="@+id/goalTitleTextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="물 2L 이상 마시기"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginBottom="10dp"/>
 
     <!-- 상세 설명 텍스트 -->
     <TextView
+        android:id="@+id/goalDetailsTextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="- 30 days challenge"
         android:textSize="18dp"
         android:layout_marginTop="4dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginBottom="10dp"/>
 
     <TextView
@@ -51,19 +53,19 @@
         android:text="- 매일 오전 8시마다, 팝업"
         android:textSize="18dp"
         android:layout_marginTop="4dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginBottom="10dp"/>
 
     <!-- 목표 진행 상황 텍스트 -->
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
         android:text="목표 진행 상황"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/rounded_rectangle3"/>
 
 

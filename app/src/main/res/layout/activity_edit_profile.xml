@@ -10,19 +10,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="회원 정보 수정"
-        android:textColor="@android:color/holo_green_dark"
+        android:textColor="#85C567"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginBottom="20dp"/>
 
-    <!-- 1dp 굵기의 회색 구분선 -->
+    <!-- 구분선 -->
     <View
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="1dp"
-        android:background="#CCCCCC"
-        android:layout_marginBottom="16dp"/>
+        android:background="#85C567"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="30dp" />
 
     <!-- 프로필 사진 -->
     <ImageView
@@ -31,7 +32,6 @@
         android:layout_height="150dp"
         android:src="@drawable/default_profile_image"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_image"/> <!-- 동그란 테두리 적용 -->
 
@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="이름"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="30dp"
         android:textStyle="bold"
         android:textSize="15dp" />
     <!-- 이름 입력 -->
@@ -50,6 +50,8 @@
         android:hint="   이름"
         android:textSize="18dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/rounded_edittext"/>
 
 
@@ -57,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="닉네임"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="30dp"
         android:textStyle="bold"
         android:textSize="15dp" />
     <!-- 닉네임 입력 -->
@@ -67,13 +69,15 @@
         android:layout_height="wrap_content"
         android:hint="   닉네임"
         android:layout_marginBottom="8dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/rounded_edittext"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="이메일"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="30dp"
         android:textStyle="bold"
         android:textSize="15dp" />
 
@@ -84,13 +88,15 @@
         android:layout_height="wrap_content"
         android:hint="   이메일"
         android:layout_marginBottom="8dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/rounded_edittext"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="전화번호"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="30dp"
         android:textStyle="bold"
         android:textSize="15dp" />
 
@@ -101,6 +107,8 @@
         android:layout_height="wrap_content"
         android:hint="   전화번호"
         android:layout_marginBottom="16dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/rounded_edittext"/>
 
     <!-- 저장과 취소 버튼 -->
@@ -111,18 +119,20 @@
         android:gravity="center">
 
         <!-- 저장 버튼 -->
-        <Button
+        <android.widget.Button
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="저장"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_button"/>
 
         <!-- 취소 버튼 -->
-        <Button
+        <android.widget.Button
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="취소"/>
+            android:text="취소"
+            android:background="@drawable/rounded_button2"/>
     </LinearLayout>
     </LinearLayout>

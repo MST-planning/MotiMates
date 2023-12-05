@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+  
     <!-- 카메라, 갤러리 권한 받기 -->
     <uses-feature
         android:name="android.hardware.camera"
@@ -24,6 +24,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Motimates"
         tools:targetApi="31">
+        <activity android:name=".ActivityInProgressGoalActivity">
+        </activity>
+
+        <activity
+            android:name=".GoalListActivity"
+            android:exported="false" />
         <activity
             android:name=".NotificationPush"
             android:exported="false" />
@@ -55,12 +61,8 @@
 
         <activity
             android:name=".EditProfileActivity"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name=".GoalListActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
+        <activity android:name=".MyGarden" />
 
         <activity android:name=".MyPageActivity"/>
 
@@ -72,7 +74,8 @@
 
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
+
 </manifest>
