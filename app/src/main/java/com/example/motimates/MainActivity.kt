@@ -2,16 +2,16 @@ package com.example.motimates
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.motimates.AddPurpose
-import com.example.motimates.EditProfileActivity
-import com.example.motimates.GoalListActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.motimates.MyGarden
-import com.example.motimates.R
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewGoalsButton: Button
     private lateinit var viewFlowerGardenButton: Button
     private lateinit var editProfileButton: Button
+
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
+    private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +69,51 @@ class MainActivity : AppCompatActivity() {
             // Handle the click event for the "회원 정보 수정" button
             // For example, open a new activity to edit the user's profile
             startActivity(Intent(this, EditProfileActivity::class.java))
+        }
+
+        drawerLayout = findViewById(R.id.drawer_layout)
+        toolbar = findViewById(R.id.toolbar)
+        navView = findViewById(R.id.nav_view)
+
+        setSupportActionBar(toolbar)
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, toolbar,
+            R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+
+        // 네비게이션 아이템 클릭 리스너 설정
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.main_page -> {
+                    // 홈 화면으로 이동
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.add_ach -> {
+                    // 목표 추가 화면으로 이동
+                    startActivity(Intent(this, AddPurpose::class.java))
+                    true
+                }
+                R.id.look_ach -> {
+                    // 목표 보기 화면으로 이동
+                    startActivity(Intent(this, GoalListActivity::class.java))
+                    true
+                }
+                R.id.look_garden-> {
+                    // 꽃밭 보기 화면으로 이동
+                    startActivity(Intent(this, MyGarden::class.java))
+                    true
+                }
+                R.id.member_info-> {
+                    // 회원 정보 수정 화면으로 이동
+                    startActivity(Intent(this, EditProfileActivity::class.java))
+                    true
+                }
+                else -> false
+            }
         }
     }
 }
