@@ -29,23 +29,22 @@
         android:orientation="vertical">
 
     <TextView
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/MainColor"
         android:text="제목"/>
 
-    <EditText
-        android:id="@+id/title"
-        android:background="@drawable/text_box_border"
-        android:padding="2dp"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:textColorHint="@color/MainColor"
-        android:inputType="text"
-        android:hint="제목을 입력해주세요"
-        android:autofillHints="none"
-        android:maxLines="1"/>
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:autofillHints="none"
+            android:background="@drawable/text_box_border"
+            android:hint="제목을 입력해주세요"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColorHint="@color/MainColor" />
 
     <TextView
         android:layout_marginTop="5dp"
@@ -57,7 +56,6 @@
         <EditText
             android:id="@+id/content"
             android:background="@drawable/text_box_border"
-            android:padding="3dp"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:maxLines="3"
@@ -111,7 +109,7 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/custom_date"
+        android:id="@+id/custom_text"
         android:visibility="gone"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
