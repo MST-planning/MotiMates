@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
 
     <!-- 제목 -->
     <TextView
@@ -10,33 +12,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="내가 달성 중인 목표"
-        android:textSize="24sp"
-        android:textColor="@android:color/holo_green_dark"
+        android:textSize="25dp"
+        android:textColor="#85C567"
+        android:textStyle="bold"
         android:gravity="left"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:padding="20dp"/>
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"/>
 
     <!-- 구분선 -->
     <View
         android:id="@+id/dividerView"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray" />
+        android:layout_marginLeft="30dp"
+        android:background="#ADE095" />
 
     <!-- 목표 1 -->
     <LinearLayout
+        android:id="@+id/goalLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:clickable="true"
+        android:onClick="onGoalItemClick"
+        android:layout_marginTop="5dp">
 
-        <!-- 목표 이미지 -->
-        <ImageView
-            android:id="@+id/goalImageView1"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/goal_image1" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_member1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:elevation="6dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="20dp">
+
+            <ImageView
+                android:id="@+id/goalImageView1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/goal_image1"
+                android:background="@drawable/background_radius"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
 
         <!-- 목표 정보 -->
         <LinearLayout
@@ -52,8 +74,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="아침 러닝 3km"
+                android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"/>
 
             <!-- 목표 세부사항 -->
             <TextView
@@ -62,32 +86,49 @@
                 android:layout_height="wrap_content"
                 android:text="- 30 days challenge, 매일 물빛공원에서"
                 android:textSize="14sp"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginTop="5dp"/>
         </LinearLayout>
     </LinearLayout>
 
     <!-- 구분선 1 -->
     <View
         android:id="@+id/dividerView1"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@android:color/darker_gray" />
+        android:layout_marginLeft="20dp"
+        android:background="#ADE095" />
 
     <!-- 목표 2 -->
     <LinearLayout
+        android:id="@+id/goalLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:clickable="true"
+        android:onClick="onGoalItemClick"
+>
 
-        <!-- 목표 이미지 -->
-        <ImageView
-            android:id="@+id/goalImageView2"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/goal_image2" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_member2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:elevation="6dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="20dp">
+
+            <ImageView
+                android:id="@+id/goalImageView2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/goal_image2"
+                android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
 
         <!-- 목표 정보 -->
         <LinearLayout
@@ -104,7 +145,9 @@
                 android:layout_height="wrap_content"
                 android:text="화분에 물주기"
                 android:textSize="18sp"
-                android:textColor="@android:color/black" />
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"/>
 
             <!-- 목표 세부사항 -->
             <TextView
@@ -113,32 +156,51 @@
                 android:layout_height="wrap_content"
                 android:text="- 매일 아침 6시마다"
                 android:textSize="14sp"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginTop="5dp"/>
         </LinearLayout>
     </LinearLayout>
 
     <!-- 구분선 2 -->
     <View
         android:id="@+id/dividerView2"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@android:color/darker_gray" />
+        android:layout_marginLeft="20dp"
+        android:background="#ADE095" />
 
     <!-- 목표 3 -->
     <LinearLayout
+        android:id="@+id/goalLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:clickable="true"
+        android:onClick="onGoalItemClick">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_member3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:elevation="6dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="20dp">
+
+            <ImageView
+                android:id="@+id/goalImageView3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/goal_image3"
+                android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
 
         <!-- 목표 이미지 -->
-        <ImageView
-            android:id="@+id/goalImageView3"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/goal_image2" />
+
 
         <!-- 목표 정보 -->
         <LinearLayout
@@ -154,8 +216,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="비염약 복용"
+                android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"/>
 
             <!-- 목표 세부사항 -->
             <TextView
@@ -164,32 +228,49 @@
                 android:layout_height="wrap_content"
                 android:text="- ~2023. 12. 26까지, 이틀마다"
                 android:textSize="14sp"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginTop="5dp"/>
         </LinearLayout>
     </LinearLayout>
 
     <!-- 구분선 2 -->
     <View
         android:id="@+id/dividerView4"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@android:color/darker_gray" />
+        android:layout_marginLeft="20dp"
+        android:background="#ADE095"/>
 
-    <!-- 목표 3 -->
+    <!-- 목표 4 -->
     <LinearLayout
+        android:id="@+id/goalLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:clickable="true"
+        android:onClick="onGoalItemClick">
 
-        <!-- 목표 이미지 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_member4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:elevation="6dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="20dp">
+
         <ImageView
             android:id="@+id/goalImageView4"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/goal_image2" />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/goal_image4"
+            android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
+
 
         <!-- 목표 정보 -->
         <LinearLayout
@@ -205,8 +286,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="영어 회화 쉐도잉"
+                android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"/>
 
             <!-- 목표 세부사항 -->
             <TextView
@@ -215,7 +298,8 @@
                 android:layout_height="wrap_content"
                 android:text="- 30 days challenge, 매일 30분"
                 android:textSize="14sp"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginTop="5dp"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
