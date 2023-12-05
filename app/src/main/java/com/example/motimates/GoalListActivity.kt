@@ -19,7 +19,7 @@ class GoalListActivity : AppCompatActivity() {
         viewModel.goalList = listOf("목표 1", "목표 2", "목표 3")
 
         // 데이터 바인딩에 ViewModel 할당
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        //binding.viewModel = viewModel
+        //binding.lifecycleOwner = this
     }
 }

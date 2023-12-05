@@ -5,7 +5,6 @@
     <!-- 카메라, 갤러리 권한 받기-->
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -28,16 +27,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".GoalListActivity"
+            android:exported="false">
+        </activity>
+
         <provider
             android:authorities="app"
             android:name="androidx.core.content.FileProvider"
             android:exported="false"
-            android:grantUriPermissions="true"> //카메라 앱 프로바이더
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/> // file_paths.xml을 만들어야 하는 듯
+                android:resource="@xml/file_paths"/>
         </provider>
-        <activity android:name=".MypageActivity" />
     </application>
-
 </manifest>
