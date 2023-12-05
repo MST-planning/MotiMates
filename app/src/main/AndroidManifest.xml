@@ -14,7 +14,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -54,6 +53,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".GoalListActivity"
+            android:exported="false">
+        </activity>
+
         <activity android:name=".MyPageActivity"/>
 
         <provider
@@ -67,5 +75,4 @@
                 android:resource="@xml/file_paths"/>
         </provider>
     </application>
-
 </manifest>
