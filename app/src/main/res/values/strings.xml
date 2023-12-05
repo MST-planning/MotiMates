@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">motimates</string>
 
-    <!--    목표-->
+    <!--    목표 종료-->
     <string name="a_month">30day</string>
     <string name="a_year">1year</string>
     <string name="every_day">every day</string>
@@ -19,7 +19,11 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+  <!-- 네비게이션 뷰 -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+<!--    알림에 임시로 들어갈 문장-->
+    <string name="Title">제목</string>
+    <string name = "content">내용</string>
 </resources>
