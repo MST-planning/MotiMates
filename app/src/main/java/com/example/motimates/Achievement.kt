@@ -13,15 +13,19 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.motimates.databinding.ActivityAchievementBinding
+import com.google.android.material.navigation.NavigationView
 import java.io.File
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 
 class Achievement : AppCompatActivity() {
@@ -131,12 +135,27 @@ class Achievement : AppCompatActivity() {
             requestGalleryLauncher.launch(intent)
         }
 
-        //툴바, 네비게이션 뷰 예시(액티비티로 구현했기 때문에 각각 drawer와 toolbar를 include 해줘야 함)
-        val drawer = findViewById<DrawerLayout>(R.id.achievement_drawer)
-        val menuBtn = findViewById<ImageView>(R.id.menuButton)
-        menuBtn.setOnClickListener {
-            drawer.openDrawer(GravityCompat.START)
-        }
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer)
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        val navView = findViewById<NavigationView>(R.id.nav_view)
+        val title= findViewById<TextView>(R.id.titleTextView)
+
+        val selectedTitle = intent.getStringExtra("goalTitle")
+        title.setText(selectedTitle) //인텐트로 제목 받아오기
+
+        val today= findViewById<TextView>(R.id.dateTextView)
+        val current= Calendar.getInstance().getTime()
+        val formatter= SimpleDateFormat("yyyy년 MM월 dd일")
+        val formattedDate= formatter.format(current)
+        today.setText(formattedDate) //오늘 날짜 텍스트뷰에 출력
+
+        setSupportActionBar(toolbar)
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, toolbar,
+            R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
     }
 
     //이미지 크기 계산 함수
