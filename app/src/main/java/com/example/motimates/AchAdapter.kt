@@ -22,6 +22,7 @@ class AchAdapter(val datas: MutableList<String>): RecyclerView.Adapter<RecyclerV
         binding.achContent.text = datas[position]
         binding.achContent.setOnClickListener(){
             val intent= Intent(binding.achContent.context, Achievement::class.java)
+            intent.putExtra("goalTitle", binding.achContent.text.toString())
             binding.achContent.context.startActivity(intent) //목표 리스트 리사이클러 뷰 클릭 이벤트 처리(목표 수행 페이지로 이동)
         }
     }
