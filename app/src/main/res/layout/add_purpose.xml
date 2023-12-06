@@ -187,6 +187,12 @@
             android:layout_marginTop="5dp"
             android:text="알림 시간"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/timeRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone"/>
+
         <Button
             android:id="@+id/addTime"
             android:background="@drawable/color_button"
