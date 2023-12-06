@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
         // EditProfileActivity에서 돌아왔을 때, 데이터 확인
         val newName = intent.getStringExtra("newName")
         if (!newName.isNullOrBlank()) {
