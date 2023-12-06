@@ -36,6 +36,8 @@ class ActivityInProgressGoalActivity : AppCompatActivity() {
         certificationButton.setOnClickListener {
             // Achievement.kt 액티비티로 이동
             val intent = Intent(this, Achievement::class.java)
+            intent.putExtra("goalTitle", goalTitle)
+            intent.putExtra("goalDetails", goalDetails)
             startActivity(intent)
         }
 
