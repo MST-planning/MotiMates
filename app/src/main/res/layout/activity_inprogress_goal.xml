@@ -358,6 +358,7 @@
 
         <!-- 목표 인증하러 가기 버튼 -->
         <Button
+            android:id="@+id/certificationButton"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:text="목표 인증하러 가기"

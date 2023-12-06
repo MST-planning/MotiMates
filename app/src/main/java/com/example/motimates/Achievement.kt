@@ -18,13 +18,15 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 class Achievement : AppCompatActivity() {
-    val binding = ActivityAchievementBinding.inflate(layoutInflater) //oncreate 외부에서도 뷰바인딩 사용
+    private var binding = ActivityAchievementBinding.inflate(layoutInflater) //oncreate 외부에서도 뷰바인딩 사용
     lateinit var filePath: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_achievement)
 
+        // 뷰 바인딩 초기화
+        binding = ActivityAchievementBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //사진 올리기 버튼
