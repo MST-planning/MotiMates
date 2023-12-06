@@ -33,7 +33,7 @@ class AchievementMain : AppCompatActivity() {
         val achDetail2 = binding2.goalDetailsTextView2
 
         val achText3= binding2.goalTitleTextView3
-        val achDetail3 = binding2.goalDetailsTextVie3
+        val achDetail3 = binding2.goalDetailsTextView3
 
         val achText4= binding2.goalTitleTextView4
         val achDetail4 = binding2.goalDetailsTextView4//목표 리스트 받아오기 (하드코딩)
