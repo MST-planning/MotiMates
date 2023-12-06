@@ -2,6 +2,7 @@ package com.example.motimates
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +30,14 @@ class ActivityInProgressGoalActivity : AppCompatActivity() {
 
         titleTextView.text = goalTitle
         detailsTextView.text = goalDetails
+
+        // 목표 인증하러 가기 버튼
+        val certificationButton = findViewById<Button>(R.id.certificationButton)
+        certificationButton.setOnClickListener {
+            // Achievement.kt 액티비티로 이동
+            val intent = Intent(this, Achievement::class.java)
+            startActivity(intent)
+        }
 
         // 네비게이션 뷰를 위한 설정
         drawerLayout = findViewById(R.id.drawer_layout)
