@@ -13,4 +13,8 @@
         <item name="colorAccent">@color/background</item>
     </style>
     <style name="Theme.Motimates" parent="Base.Theme.Motimates" />
+
+    <style name="SplashTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:windowBackground">@drawable/splashimage</item>
+    </style>
 </resources>
