@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         // EditProfileActivity에서 돌아왔을 때, 데이터 확인
         val newName = intent.getStringExtra("newName")
         if (!newName.isNullOrBlank()) {
-            greetingTextView2.text = newName+"님!"
+            greetingTextView2.text = newName + "님!"
         }
     }
 
