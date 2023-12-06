@@ -35,8 +35,6 @@ class Achievement : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_achievement)
-        // 뷰 바인딩 초기화
-        binding = ActivityAchievementBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //갤러리 앱 연동

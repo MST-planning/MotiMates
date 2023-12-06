@@ -4,30 +4,76 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fe2dfb4-c013-43a9-9a09-2ca8f7d30861" name="Changes" comment="" />
+    <list default="true" id="7fe2dfb4-c013-43a9-9a09-2ca8f7d30861" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/motimates/AddPurposeTimeRecycler.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/motimates/SplashActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/clock_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/delete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/launcherlogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/rounded_rectangle4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/splashimage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/success.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/table_border.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/layout/activity_splash.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/layout/add_purpose_time.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/motimates/Achievement.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/motimates/Achievement.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/motimates/ActivityInProgressGoalActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/motimates/ActivityInProgressGoalActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/motimates/AddPurpose.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/motimates/AddPurpose.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/motimates/EditProfileActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/motimates/EditProfileActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/motimates/GoalListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/motimates/GoalListActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/motimates/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/motimates/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_add_purpose.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_edit_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_edit_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_goal_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_goal_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_inprogress_goal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_inprogress_goal.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/add_purpose.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/add_purpose.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/navigation_header.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/navigation_header.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/time_recyclerview.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/themes.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2YIIspcn2P6pxBj8GaVLloErF0F" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "android.gradle.sync.needed": "true",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/backw/Desktop/6th/MobileSoftware/기말/MotiMates"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;android.gradle.sync.needed&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/backw/Desktop/6th/MobileSoftware/기말/MotiMates&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
