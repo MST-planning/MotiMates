@@ -32,44 +32,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navView: NavigationView
     private lateinit var toolbar: Toolbar
 
-        // 목표 정보 설정 (가상의 데이터로 예시)
-        binding.waterDropCountTextView.text = "5"
-        binding.flowerCountTextView.text = "10"
-        binding.goalCountTextView.text = "3"
-
-        // 목표 추가하기 버튼 클릭 이벤트
-        binding.addGoalButton.setOnClickListener {
-            // 목표 추가하기 버튼 클릭 시 처리
-            val intent = Intent(this, AddPurpose::class.java)
-            startActivity(intent)
-        }
-
-        // 달성 중인 목표 보기 버튼 클릭 이벤트
-        binding.viewGoalsButton.setOnClickListener {
-            // 달성 중인 목표 보기 버튼 클릭 시 처리
-            val intent = Intent(this, AchievementMain::class.java)
-            startActivity(intent)
-        }
-
-        // 나의 꽃밭 보기 버튼 클릭 이벤트
-        binding.viewFlowerGardenButton.setOnClickListener {
-            // 나의 꽃밭 보기 버튼 클릭 시 처리
-            val intent = Intent(this, MyGarden::class.java)
-            startActivity(intent)
-        }
-
-        // 회원 정보 수정 버튼 클릭 이벤트
-        binding.editProfileButton.setOnClickListener {
-            // 회원 정보 수정 버튼 클릭 시 처리
-            val intent = Intent(this, EditProfileActivity::class.java)
-            startActivity(intent)
-            
     override fun onResume() {
         super.onResume()
         // EditProfileActivity에서 돌아왔을 때, 데이터 확인
         val newName = intent.getStringExtra("newName")
         if (!newName.isNullOrBlank()) {
-            greetingTextView2.text = newName+"님!"
+            greetingTextView2.text = newName + "님!"
         }
     }
 

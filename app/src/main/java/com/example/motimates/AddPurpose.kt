@@ -64,9 +64,7 @@ class AddPurpose : AppCompatActivity() {
 
     private val date = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
         calendar.set(year, month, dayOfMonth)
-        Log.d("listener", "${calendar}")
         datetext = "${calendar.get(Calendar.YEAR)}년 ${calendar.get(Calendar.MONTH)}월 ${calendar.get(Calendar.DATE)}일까지"
-        Log.d("listener", "${datetext}")
 
         //선택한 날짜 텍스트로 보여주기
         binding.customText.visibility = View.VISIBLE
@@ -75,13 +73,10 @@ class AddPurpose : AppCompatActivity() {
 
     private val time = TimePickerDialog.OnTimeSetListener{view, hour, minute ->
         val t = listOf(hour, minute)
-        Log.d("Listener", "리스너 호출")
         times.add(t)
-        Log.d("Listener", "리스트에 추가 ${times}")
         //times의 원소가 1개 이상일 때만 visible로 변경
         binding.timeRecycler.visibility = View.VISIBLE
         //추가된 리스트로 업데이트
         adapter.submitList(times.toMutableList())
-        Log.d("Listener", "adapter에 등록")
     }
 }
