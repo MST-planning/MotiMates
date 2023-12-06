@@ -50,7 +50,7 @@ class AddPurpose : AppCompatActivity() {
                                                     }
 
         binding.save.setOnClickListener{
-            val intent = Intent(this, MyPageActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
