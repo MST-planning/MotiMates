@@ -18,6 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MOTIMATES"
-        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:textColor="@android:color/black"/>
 </LinearLayout>
