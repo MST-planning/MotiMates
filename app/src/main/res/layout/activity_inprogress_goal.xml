@@ -35,7 +35,7 @@
             android:textColor="#85C567"
             android:textStyle="bold"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"/>
 
         <View
@@ -88,319 +88,273 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/rounded_rectangle3"/>
 
+        <!-- 6x5 TableLayout -->
+        <TableLayout
+            android:layout_width="350dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:stretchColumns="*"
+            android:showDividers="beginning|middle|end"
+            android:divider="#85C567"
+            android:background="@drawable/table_border">
 
-        <!-- 목표 표의 각 셀에 대한 예시 -->
-        <!-- 목표 표의 6x5 그리드 레이아웃 -->
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:rowCount="5"
-            android:columnCount="6"
-            android:layout_marginTop="8dp"
-            android:layout_gravity="center"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
+            <!-- 데이터 행 1 -->
+            <TableRow>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <!-- 첫 번째 행 -->
-            <View
-                android:id="@+id/cell11"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <View
-                android:id="@+id/cell12"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <View
-                android:id="@+id/cell13"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
+            </TableRow>
 
-            <View
-                android:id="@+id/cell14"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-            <View
-                android:id="@+id/cell15"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-        </GridLayout>
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:rowCount="5"
-            android:columnCount="6"
-            android:layout_gravity="center"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp">
+            <TableRow>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <!-- 첫 번째 행 -->
-            <View
-                android:id="@+id/cell21"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <View
-                android:id="@+id/cell22"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <View
-                android:id="@+id/cell23"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
+            </TableRow>
 
-            <View
-                android:id="@+id/cell24"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-            <View
-                android:id="@+id/cell25"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-        </GridLayout>
+            <TableRow>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:rowCount="5"
-            android:columnCount="6"
-            android:layout_gravity="center"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <!-- 첫 번째 행 -->
-            <View
-                android:id="@+id/cell31"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <View
-                android:id="@+id/cell32"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
+            </TableRow>
+            <TableRow>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <View
-                android:id="@+id/cell33"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <View
-                android:id="@+id/cell34"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-            <View
-                android:id="@+id/cell35"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-        </GridLayout>
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:rowCount="5"
-            android:columnCount="6"
-            android:layout_gravity="center"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <!-- 첫 번째 행 -->
-            <View
-                android:id="@+id/cell41"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
+            </TableRow>
+            <TableRow>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <View
-                android:id="@+id/cell42"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <View
-                android:id="@+id/cell43"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
 
-            <View
-                android:id="@+id/cell44"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-            <View
-                android:id="@+id/cell45"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-        </GridLayout>
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:rowCount="5"
-            android:columnCount="6"
-            android:layout_gravity="center"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp">
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/success"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"/>
+            </TableRow>
 
-            <!-- 첫 번째 행 -->
-            <View
-                android:id="@+id/cell51"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
+        </TableLayout>
 
-            <View
-                android:id="@+id/cell52"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-
-            <View
-                android:id="@+id/cell53"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-
-            <View
-                android:id="@+id/cell54"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-            <View
-                android:id="@+id/cell55"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-        </GridLayout>
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:rowCount="5"
-            android:columnCount="6"
-            android:layout_gravity="center"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp">
-
-            <!-- 첫 번째 행 -->
-            <View
-                android:id="@+id/cell61"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-
-            <View
-                android:id="@+id/cell62"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-
-            <View
-                android:id="@+id/cell63"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-
-            <View
-                android:id="@+id/cell64"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-            <View
-                android:id="@+id/cell65"
-                android:layout_width="15dp"
-                android:layout_height="50dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
-                android:background="@drawable/rounded_border" />
-        </GridLayout>
 
         <!-- 목표 인증하러 가기 버튼 -->
         <Button
