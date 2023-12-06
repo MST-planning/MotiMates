@@ -26,13 +26,14 @@
                 android:background="?attr/colorPrimary" />
         </com.google.android.material.appbar.AppBarLayout>
 
+        <!-- 상단 프로필 영역 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp">
-            <!-- 상단 프로필 영역 -->
+            android:layout_marginLeft="40dp">
+
             <ImageView
                 android:id="@+id/profileImageView"
                 android:layout_width="100dp"
@@ -70,15 +71,17 @@
                     android:paddingBottom="15dp"
                     android:paddingLeft="20dp"/>
             </LinearLayout>
-
         </LinearLayout>
+
         <!-- 나의 물방울, 나의 꽃, 진행 중인 목표 -->
         <LinearLayout
             android:id="@+id/goalInfoView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:background="@drawable/rounded_rectangle">
 
             <!-- 나의 물방울 -->
@@ -163,10 +166,11 @@
 
         <View
             android:id="@+id/dividerView2"
-            android:layout_width="350dp"
+            android:layout_width="370dp"
             android:layout_height="1dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
             android:background="#ADE095" />
 
         <!-- 버튼 영역 -->
@@ -180,6 +184,8 @@
             android:textSize="20dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             app:elevation="10dp"
             android:translationZ="10dp"
             android:stateListAnimator="@null"
@@ -194,7 +200,9 @@
             android:textSize="20dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/rounded_rectangle2"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             app:elevation="10dp"
             android:translationZ="10dp"
             android:stateListAnimator="@null"/>
@@ -208,7 +216,9 @@
             android:textSize="20dp"
             android:background="@drawable/rounded_rectangle2"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             app:elevation="10dp"
             android:translationZ="10dp"
             android:stateListAnimator="@null"/>
@@ -222,7 +232,9 @@
             android:textSize="20dp"
             android:background="@drawable/rounded_rectangle2"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             app:elevation="10dp"
             android:translationZ="10dp"
             android:stateListAnimator="@null"/>

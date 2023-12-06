@@ -62,9 +62,6 @@
         <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
-        <activity android:name=".MyGarden" />
-
-        <activity android:name=".MyPageActivity"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"
