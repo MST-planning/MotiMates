@@ -1,93 +1,134 @@
 package com.example.motimates
 
-// EditProfileActivity.kt
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.motimates.databinding.ActivityEditProfileBinding
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
+import com.example.motimates.R
+import com.google.android.material.navigation.NavigationView
 
 class EditProfileActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityEditProfileBinding
+    private lateinit var nameEditText: EditText
+    private lateinit var nicknameEditText: EditText
+    private lateinit var emailEditText: EditText
+    private lateinit var phoneNumberEditText: EditText
+    private lateinit var saveButton: Button
+    private lateinit var cancelButton: Button
+
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
+    private lateinit var toolbar: Toolbar
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    companion object {
+        const val EDIT_PROFILE_REQUEST_CODE = 1
+    }
+    private fun saveProfile() {
+        // 사용자가 입력한 값을 가져와서 저장하는 로직 추가
+        val newName = nameEditText.text.toString()
+        val newNickname = nicknameEditText.text.toString()
+        val newEmail = emailEditText.text.toString()
+        val newPhoneNumber = phoneNumberEditText.text.toString()
+
+        // SharedPreferences를 사용하여 데이터 저장
+        val sharedPreferences = getSharedPreferences("UserProfile", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("name", newName)
+        editor.putString("nickname", newNickname)
+        editor.putString("email", newEmail)
+        editor.putString("phoneNumber", newPhoneNumber)
+        editor.apply()
+
+        // 메인 페이지로 돌아갈 때 데이터 전달
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("newName", newName)
+        startActivity(intent)
+
+        showToast("프로필이 저장되었습니다.")
+        finish()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_edit_profile)
 
-        // 기존 회원 정보 불러와서 화면에 설정 (가상의 데이터로 예시)
-        val currentName = "현재 이름"
-        val currentNickname = "현재 닉네임"
-        val currentEmail = "현재 이메일@example.com"
-        val currentPhoneNumber = "010-1234-5678"
+        // Initialize your views
+        nameEditText = findViewById(R.id.nameEditText)
+        nicknameEditText = findViewById(R.id.nicknameEditText)
+        emailEditText = findViewById(R.id.emailEditText)
+        phoneNumberEditText = findViewById(R.id.phoneNumberEditText)
+        saveButton = findViewById(R.id.saveButton)
+        cancelButton = findViewById(R.id.cancelButton)
 
-        binding.nameEditText.setText(currentName)
-        binding.nicknameEditText.setText(currentNickname)
-        binding.emailEditText.setText(currentEmail)
-        binding.phoneNumberEditText.setText(currentPhoneNumber)
 
-        // 수정 버튼 클릭 이벤트
-        binding.editButton.setOnClickListener {
-            enableEditMode()
+        saveButton.setOnClickListener {
+            val message = "프로필이 저장되었습니다."
+            showToast(message)
+            saveProfile()
+            finish()
         }
 
-        // 저장 버튼 클릭 이벤트
-        binding.saveButton.setOnClickListener {
-            // 수정된 정보 저장
-            val editedName = binding.nameEditText.text.toString()
-            val editedNickname = binding.nicknameEditText.text.toString()
-            val editedEmail = binding.emailEditText.text.toString()
-            val editedPhoneNumber = binding.phoneNumberEditText.text.toString()
-
-            // 여기에서 수정된 정보를 저장 또는 전송하는 작업을 수행하면 됩니다.
-            // (예: 서버에 전송, 로컬 데이터베이스에 저장 등)
-
-            // 수정이 완료되면 다시 읽기 전용 모드로 변경
-            disableEditMode()
-
-            // 뷰 갱신
-            binding.nameEditText.setText(editedName)
-            binding.nicknameEditText.setText(editedNickname)
-            binding.emailEditText.setText(editedEmail)
-            binding.phoneNumberEditText.setText(editedPhoneNumber)
+        cancelButton.setOnClickListener {
+            val message = "수정이 취소되었습니다."
+            showToast(message)
+            finish() // 메인 화면으로 돌아감
         }
 
-        // 취소 버튼 클릭 이벤트
-        binding.cancelButton.setOnClickListener {
-            // 수정이 취소되면 읽기 전용 모드로 변경
-            disableEditMode()
+        drawerLayout = findViewById(R.id.drawer_layout)
+        toolbar = findViewById(R.id.toolbar)
+        navView = findViewById(R.id.nav_view)
 
-            // 이전 데이터로 다시 설정
-            binding.nameEditText.setText(currentName)
-            binding.nicknameEditText.setText(currentNickname)
-            binding.emailEditText.setText(currentEmail)
-            binding.phoneNumberEditText.setText(currentPhoneNumber)
+        setSupportActionBar(toolbar)
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, toolbar,
+            R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        // 네비게이션 아이템 클릭 리스너 설정
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.main_page -> {
+                    // 홈 화면으로 이동
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.add_ach -> {
+                    // 목표 추가 화면으로 이동
+                    startActivity(Intent(this, AddPurpose::class.java))
+                    true
+                }
+                R.id.look_ach -> {
+                    // 목표 보기 화면으로 이동
+                    startActivity(Intent(this, GoalListActivity::class.java))
+                    true
+                }
+                R.id.look_garden-> {
+                    // 꽃밭 보기 화면으로 이동
+                    startActivity(Intent(this, MyGarden::class.java))
+                    true
+                }
+                R.id.member_info-> {
+                    // 회원 정보 수정 화면으로 이동
+                    startActivity(Intent(this, EditProfileActivity::class.java))
+                    true
+                }
+                else -> false
+            }
         }
-
-        // 초기에는 읽기 전용 모드로 시작
-        disableEditMode()
-    }
-
-    private fun enableEditMode() {
-        // 수정 버튼 클릭 시 호출되며, 편집 가능한 상태로 변경
-        binding.nameEditText.isEnabled = true
-        binding.nicknameEditText.isEnabled = true
-        binding.emailEditText.isEnabled = true
-        binding.phoneNumberEditText.isEnabled = true
-
-        // 버튼 상태 변경
-        binding.editButton.isEnabled = false
-        binding.saveButton.isEnabled = true
-        binding.cancelButton.isEnabled = true
-    }
-
-    private fun disableEditMode() {
-        // 저장 또는 취소 버튼 클릭 시 호출되며, 읽기 전용 상태로 변경
-        binding.nameEditText.isEnabled = false
-        binding.nicknameEditText.isEnabled = false
-        binding.emailEditText.isEnabled = false
-        binding.phoneNumberEditText.isEnabled = false
-
-        // 버튼 상태 변경
-        binding.editButton.isEnabled = true
-        binding.saveButton.isEnabled = false
-        binding.cancelButton.isEnabled = false
     }
 }
+
