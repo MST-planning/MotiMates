@@ -1,6 +1,7 @@
 package com.example.motimates
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -61,7 +62,8 @@ class MainActivity : AppCompatActivity() {
         viewGoalsButton = findViewById(R.id.viewGoalsButton)
         viewFlowerGardenButton = findViewById(R.id.viewFlowerGardenButton)
         editProfileButton = findViewById(R.id.editProfileButton)
-        logoutButton = findViewById(R.id.logoutButton)
+
+        updateWelcomeMessage()
 
         addGoalButton.setOnClickListener {
             startActivity(Intent(this, AddPurpose::class.java))
@@ -136,5 +138,10 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+    private fun updateWelcomeMessage() {
+        val preferences = getSharedPreferences("user_data", Context.MODE_PRIVATE)
+        val nickname = preferences.getString("nickname", "")
+        greetingTextView2.text = "$nickname 님!"
     }
 }

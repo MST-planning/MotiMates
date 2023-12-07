@@ -1,5 +1,6 @@
 package com.example.motimates
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -23,9 +24,11 @@ class Signup : AppCompatActivity() {
         buttonSignup.setOnClickListener {
             val emailEditText: EditText = findViewById(R.id.signupEmail)
             val passwordEditText: EditText = findViewById(R.id.signupPassword)
+            val nicknameEditText : EditText = findViewById(R.id.signupNickname)
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
-            createAccount(email, password)
+            val nickname = nicknameEditText.text.toString()
+            createAccount(email, password, nickname)
         }
 
         // 취소하기 버튼
@@ -34,11 +37,12 @@ class Signup : AppCompatActivity() {
             finish() // 액티비티 종료
         }
     }
-    private fun createAccount(email: String, password: String) {
+    private fun createAccount(email: String, password: String, nickname: String) {
         if (email.isNotEmpty() && password.isNotEmpty()) {
             auth?.createUserWithEmailAndPassword(email, password)
                 ?.addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
+                        saveNickname(nickname)
                         Toast.makeText(
                             this, "계정 생성 완료.",
                             Toast.LENGTH_SHORT
@@ -52,5 +56,12 @@ class Signup : AppCompatActivity() {
                     }
                 }
         }
+    }
+    private fun saveNickname(nickname: String) {
+        // SharedPreferences 등을 사용하여 닉네임 저장
+        val preferences = getSharedPreferences("user_data", Context.MODE_PRIVATE)
+        val editor = preferences.edit()
+        editor.putString("nickname", nickname)
+        editor.apply()
     }
 }
