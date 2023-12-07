@@ -70,6 +70,11 @@
                     android:layout_marginTop="8dp"
                     android:paddingBottom="15dp"
                     android:paddingLeft="20dp"/>
+                <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:text="로그아웃"
+                    android:id="@+id/logoutButton"/>
             </LinearLayout>
         </LinearLayout>
 
