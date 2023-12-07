@@ -18,7 +18,7 @@ import com.google.android.material.navigation.NavigationView
 class EditProfileActivity : AppCompatActivity() {
 
     private lateinit var nameEditText: EditText
-    private lateinit var nicknameEditText: EditText
+    //private lateinit var nicknameEditText: EditText
     private lateinit var emailEditText: EditText
     private lateinit var phoneNumberEditText: EditText
     private lateinit var saveButton: Button
@@ -38,7 +38,7 @@ class EditProfileActivity : AppCompatActivity() {
     private fun saveProfile() {
         // 사용자가 입력한 값을 가져와서 저장하는 로직 추가
         val newName = nameEditText.text.toString()
-        val newNickname = nicknameEditText.text.toString()
+        //val newNickname = nicknameEditText.text.toString()
         val newEmail = emailEditText.text.toString()
         val newPhoneNumber = phoneNumberEditText.text.toString()
 
@@ -46,7 +46,7 @@ class EditProfileActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("UserProfile", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("name", newName)
-        editor.putString("nickname", newNickname)
+        //editor.putString("nickname", newNickname)
         editor.putString("email", newEmail)
         editor.putString("phoneNumber", newPhoneNumber)
         editor.apply()
@@ -66,7 +66,7 @@ class EditProfileActivity : AppCompatActivity() {
 
         // Initialize your views
         nameEditText = findViewById(R.id.nameEditText)
-        nicknameEditText = findViewById(R.id.nicknameEditText)
+        //nicknameEditText = findViewById(R.id.nicknameEditText)
         emailEditText = findViewById(R.id.emailEditText)
         phoneNumberEditText = findViewById(R.id.phoneNumberEditText)
         saveButton = findViewById(R.id.saveButton)
