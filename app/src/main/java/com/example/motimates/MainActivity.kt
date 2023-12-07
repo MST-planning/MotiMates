@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.main_page -> {
-                    // 홈 화면으로 이동
+                    // 홈 화면으로 이동입
                     startActivity(Intent(this, MainActivity::class.java))
                     true
                 }
@@ -111,6 +111,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.member_info-> {
                     // 회원 정보 수정 화면으로 이동
                     startActivity(Intent(this, EditProfileActivity::class.java))
+                    true
+                }
+                R.id.signup -> {
+                    startActivity(Intent(this, Signup::class.java))
                     true
                 }
                 else -> false

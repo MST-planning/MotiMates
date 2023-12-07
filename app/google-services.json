@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "158469667736",
+    "project_id": "motimates-f2555",
+    "storage_bucket": "motimates-f2555.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158469667736:android:56acc80ff9998a9ee6c9ed",
+        "android_client_info": {
+          "package_name": "com.example.motimates"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_hh714k6LAq5dqhfWmBo128rtKCG25ck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
