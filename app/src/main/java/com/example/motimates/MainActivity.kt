@@ -78,14 +78,7 @@ class MainActivity : AppCompatActivity() {
         editProfileButton.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java))
         }
-        // 로그아웃
-        logoutButton.setOnClickListener {
-            // 로그인 화면으로
-            val intent = Intent(this, Signin::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
-            auth?.signOut()
-        }
+
 
         drawerLayout = findViewById(R.id.drawer_layout)
         toolbar = findViewById(R.id.toolbar)
@@ -134,6 +127,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.signin -> {
                     startActivity(Intent(this, Signin::class.java))
+                    true
+                }
+                R.id.logout -> {
+                    startActivity(Intent(this, Logout::class.java))
                     true
                 }
                 else -> false
