@@ -14,8 +14,12 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.motimates.EditProfileActivity.Companion.EDIT_PROFILE_REQUEST_CODE
 import com.example.motimates.MyGarden
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class MainActivity : AppCompatActivity() {
+    private var auth : FirebaseAuth? = null
 
     private lateinit var profileImageView: ImageView
     private lateinit var greetingTextView: TextView
@@ -27,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewGoalsButton: Button
     private lateinit var viewFlowerGardenButton: Button
     private lateinit var editProfileButton: Button
+    private lateinit var logoutButton : Button
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
@@ -44,6 +49,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        auth = Firebase.auth
 
         profileImageView = findViewById(R.id.profileImageView)
         greetingTextView = findViewById(R.id.greetingTextView)
@@ -55,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         viewGoalsButton = findViewById(R.id.viewGoalsButton)
         viewFlowerGardenButton = findViewById(R.id.viewFlowerGardenButton)
         editProfileButton = findViewById(R.id.editProfileButton)
+        logoutButton = findViewById(R.id.logoutButton)
 
         addGoalButton.setOnClickListener {
             startActivity(Intent(this, AddPurpose::class.java))
@@ -71,6 +78,7 @@ class MainActivity : AppCompatActivity() {
         editProfileButton.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java))
         }
+
 
         drawerLayout = findViewById(R.id.drawer_layout)
         toolbar = findViewById(R.id.toolbar)
@@ -115,6 +123,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.signup -> {
                     startActivity(Intent(this, Signup::class.java))
+                    true
+                }
+                R.id.signin -> {
+                    startActivity(Intent(this, Signin::class.java))
+                    true
+                }
+                R.id.logout -> {
+                    startActivity(Intent(this, Logout::class.java))
                     true
                 }
                 else -> false
