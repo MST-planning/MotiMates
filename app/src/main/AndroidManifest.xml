@@ -38,10 +38,6 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
-            android:exported="true"/>
-
-        <activity
             android:name=".ActivityInProgressGoalActivity"/>
         <activity
             android:name=".GoalListActivity"
@@ -80,7 +76,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="app"
+            android:authorities="com.example.motimates.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
 

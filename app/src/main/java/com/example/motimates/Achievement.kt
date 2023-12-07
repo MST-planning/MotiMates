@@ -63,7 +63,8 @@ class Achievement : AppCompatActivity() {
         }
 
         //카메라 앱 연동
-        val requestCameraFileLauncher= registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        val requestCameraFileLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()){
             val calRatio = calculateInSampleSize(
                 Uri.fromFile(File(filePath)),
                 resources.getDimensionPixelSize(R.dimen.imgSize),
@@ -79,48 +80,24 @@ class Achievement : AppCompatActivity() {
 
         //카메라 버튼
         binding.cameraButton.setOnClickListener {
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(
-                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    ) == PackageManager.PERMISSION_GRANTED
-                ) {
-                    Log.d("tag", "권한 설정 완료")
-                    try {
-
-                        Log.d("로그처리", "카메라 선택")
-                        val timeStamp: String =
-                            SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-                        val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-                        val file = File.createTempFile(
-                            "JPEG_${timeStamp}_",
-                            ".jpg",
-                            storageDir
-                        )
-                        filePath = file.absolutePath
-                        val photoURI: Uri = FileProvider.getUriForFile(
-                            this,
-                            "com.example.motimates.fileprovider",
-                            file
-                        )
-                        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                        requestCameraFileLauncher.launch(intent)
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }
-                else{
-                    Log.d("tag", "권한 설정 요청")
-                    ActivityCompat.requestPermissions(
-                        this,
-                        arrayOf(
-                            android.Manifest.permission.CAMERA,
-                            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-                        ),
-                        1
-                    )
-                }
-            }
+            Log.d("로그처리", "갤러리 선택")
+            val timeStamp: String =
+                SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+            val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            val file = File.createTempFile(
+                "JPEG_${timeStamp}_",
+                ".jpg",
+                storageDir
+            )
+            filePath = file.absolutePath
+            val photoURI: Uri = FileProvider.getUriForFile(
+                this,
+                "com.example.motimates.fileprovider",
+                file
+            )
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+            requestCameraFileLauncher.launch(intent)
         }
 
         //갤러리 버튼
@@ -138,9 +115,17 @@ class Achievement : AppCompatActivity() {
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         val navView = findViewById<NavigationView>(R.id.nav_view)
         val title= findViewById<TextView>(R.id.titleTextView)
+        val target= findViewById<TextView>(R.id.target_content)
 
         val selectedTitle = intent.getStringExtra("goalTitle")
         title.setText(selectedTitle) //인텐트로 제목 받아오기
+        val detail = intent.getStringExtra("goalDetails")
+        if (detail != null) {
+            if(detail.contains(",")) {
+                detail.replace(",", "\n -") //세부사항에 ,가 있으면 줄바꿈으로 변경
+                target.setText(detail)
+            }
+        } //인텐트로 세부사항 받아오기
 
         val today= findViewById<TextView>(R.id.dateTextView)
         val current= Calendar.getInstance().getTime()
