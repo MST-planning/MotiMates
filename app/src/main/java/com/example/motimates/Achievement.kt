@@ -29,7 +29,9 @@ import java.util.Calendar
 import java.util.Date
 
 class Achievement : AppCompatActivity() {
+    var uploaded = 0 //사진이 업로드 되었는지 확인하는 변수
     override fun onCreate(savedInstanceState: Bundle?) {
+
         val binding = ActivityAchievementBinding.inflate(layoutInflater) //oncreate 외부에서도 뷰바인딩 사용
         lateinit var filePath: String
 
@@ -60,6 +62,8 @@ class Achievement : AppCompatActivity() {
             }catch (e: Exception){
                 e.printStackTrace()
             } // 예외 발생시 throw
+
+            dialog() //인증 완료 다이얼로그
         }
 
         //카메라 앱 연동
@@ -76,11 +80,14 @@ class Achievement : AppCompatActivity() {
             bitmap?.let {
                 binding.proofImage.setImageBitmap(bitmap)
             }
+
+            dialog() //인증 완료 다이얼로그
         }
 
         //카메라 버튼
         binding.cameraButton.setOnClickListener {
-            Log.d("로그처리", "갤러리 선택")
+            Log.d("로그처리", "카메라 선택")
+            uploaded+= 1 //사진 업로드 확인
             val timeStamp: String =
                 SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
             val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
@@ -98,11 +105,13 @@ class Achievement : AppCompatActivity() {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
             requestCameraFileLauncher.launch(intent)
+
         }
 
         //갤러리 버튼
         binding.galleryButton.setOnClickListener {
             Log.d("로그처리", "갤러리 선택")
+            uploaded+= 1 //사진 업로드 확인
             val intent = Intent(
                 Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -119,12 +128,12 @@ class Achievement : AppCompatActivity() {
 
         val selectedTitle = intent.getStringExtra("goalTitle")
         title.setText(selectedTitle) //인텐트로 제목 받아오기
-        val detail = intent.getStringExtra("goalDetails")
+        var detail = intent.getStringExtra("goalDetails")
         if (detail != null) {
             if(detail.contains(",")) {
-                detail.replace(",", "\n -") //세부사항에 ,가 있으면 줄바꿈으로 변경
-                target.setText(detail)
+                detail= detail.replace(",", "\n-") //세부사항에 ,가 있으면 줄바꿈으로 변경
             }
+            target.setText(detail)
         } //인텐트로 세부사항 받아오기
 
         val today= findViewById<TextView>(R.id.dateTextView)
@@ -164,5 +173,32 @@ class Achievement : AppCompatActivity() {
             }
         }
         return inSampleSize
+    }
+    private fun dialog() {
+        if (uploaded == 1) {
+            AlertDialog.Builder(this)
+                .setTitle("인증 완료")
+                .setMessage("오늘도 한 걸음 목표에 가까워졌네요^^")
+                .setPositiveButton("목록으로 돌아가기", DialogInterface.OnClickListener { dialog, which ->
+                    val intent = Intent(this, GoalListActivity::class.java)
+                    startActivity(intent)
+                })
+                .setNegativeButton("수정하기", DialogInterface.OnClickListener { dialog, which ->
+                    dialog.dismiss()
+                })
+                .show()
+        }else if(uploaded>1){
+            AlertDialog.Builder(this)
+                .setTitle("수정 완료")
+                .setMessage("인증사진이 수정되었습니다.")
+                .setPositiveButton("목록으로 돌아가기", DialogInterface.OnClickListener { dialog, which ->
+                    val intent = Intent(this, GoalListActivity::class.java)
+                    startActivity(intent)
+                })
+                .setNegativeButton("수정하기", DialogInterface.OnClickListener { dialog, which ->
+                    dialog.dismiss()
+                })
+                .show()
+        }
     }
 }
