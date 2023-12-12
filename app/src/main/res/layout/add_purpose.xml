@@ -1,238 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp">
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:orientation="horizontal">
-
-<!--    임시 로고로 넣어놨습니다. 이름을 tempLogo로 했다가
-            나중에 코드 수정하기 귀찮아서 이미지만 바꾸려고 Logo로 지었어요
-            변경 가능하나, 디폴트 이미지는 앱 로고로 넣으면 좋을 것 같아서요!-->
-    <ImageView
-        android:id="@+id/image"
-        android:contentDescription="목표 관련 이미지"
-        android:padding="5dp"
-        android:src="@drawable/logo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"/>
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/MainColor"
-        android:text="제목"/>
-
-        <EditText
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:autofillHints="none"
-            android:background="@drawable/text_box_border"
-            android:hint="제목을 입력해주세요"
-            android:inputType="text"
-            android:maxLines="1"
-            android:textColorHint="@color/MainColor" />
-
-    <TextView
-        android:layout_marginTop="5dp"
-        android:textColor="@color/MainColor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="소개"/>
-
-        <EditText
-            android:id="@+id/content"
-            android:background="@drawable/text_box_border"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:maxLines="3"
-            android:textColorHint="@color/MainColor"
-            android:inputType="text"
-            android:autofillHints="none"
-            android:hint="간단히 소개해주세요" />
-    </LinearLayout>
-</LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:textColor="@color/MainColor"
-        android:text="기간 설정"/>
-
-    <RadioGroup
-        android:id="@+id/period"
-        android:background="@drawable/text_box_border"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/month"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="10dp"
-            android:text="@string/a_month"/>
-
-        <RadioButton
-            android:id="@+id/year"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="10dp"
-            android:text="@string/a_year"/>
-
-        <RadioButton
-            android:id="@+id/every"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="10dp"
-            android:text="@string/every_day" />
-
-        <RadioButton
-            android:id="@+id/custom"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="직접 설정"/>
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/custom_text"
-        android:background="@drawable/text_under"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:textColor="@color/MainColor"
-        android:text="알림 설정"/>
-
-    <LinearLayout
-        android:background="@drawable/layout_edge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/MainColor"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:text="알림 형태"/>
-
-<!--        체크박스-->
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-            
-            <CheckBox
-                android:id="@+id/bell"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="20dp"
-                android:text="소리"/>
+            android:orientation="vertical"
+            android:padding="10dp">
 
-            <CheckBox
-                android:id="@+id/vib"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="20dp"
-                android:text="진동"/>
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary" />
+            </com.google.android.material.appbar.AppBarLayout>
 
-            <CheckBox
-                android:id="@+id/popUp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="20dp"
-                android:text="팝업"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="horizontal">
 
-<!--            팝업 이미지는 xml 작성 후 이미지 변경 예정입니다.-->
-            <ImageView
-                android:src="@drawable/popup_image"
-                android:contentDescription="팝업 예시 이미지"
-                android:layout_width="50dp"
-                android:layout_height="50dp"/>
+                <ImageView
+                    android:id="@+id/image"
+                    android:contentDescription="목표 관련 이미지"
+                    android:padding="5dp"
+                    android:src="@drawable/logo"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/MainColor"
+                        android:text="제목"/>
+
+                    <EditText
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:autofillHints="none"
+                        android:background="@drawable/text_box_border"
+                        android:hint="제목을 입력해주세요"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:textColorHint="@color/MainColor" />
+
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/MainColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="소개"/>
+
+                    <EditText
+                        android:id="@+id/content"
+                        android:background="@drawable/text_box_border"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:maxLines="3"
+                        android:textColorHint="@color/MainColor"
+                        android:inputType="text"
+                        android:autofillHints="none"
+                        android:hint="간단히 소개해주세요" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textColor="@color/MainColor"
+                android:text="기간 설정"/>
+
+            <RadioGroup
+                android:id="@+id/period"
+                android:background="@drawable/text_box_border"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/a_month"/>
+
+                <RadioButton
+                    android:id="@+id/year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/a_year"/>
+
+                <RadioButton
+                    android:id="@+id/every"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/every_day" />
+
+                <RadioButton
+                    android:id="@+id/custom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="직접 설정"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/custom_text"
+                android:background="@drawable/text_under"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textColor="@color/MainColor"
+                android:text="알림 설정"/>
+
+            <LinearLayout
+                android:background="@drawable/layout_edge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/MainColor"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="알림 형태"/>
+
+                <!--        체크박스-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/bell"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="20dp"
+                        android:text="소리"/>
+
+                    <CheckBox
+                        android:id="@+id/vib"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="20dp"
+                        android:text="진동"/>
+
+                    <CheckBox
+                        android:id="@+id/popUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="20dp"
+                        android:text="팝업"/>
+
+                    <!--            팝업 이미지는 xml 작성 후 이미지 변경 예정입니다.-->
+                    <ImageView
+                        android:src="@drawable/popup_image"
+                        android:contentDescription="팝업 예시 이미지"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/MainColor"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:text="알림 시간"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/timeRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/addTime"
+                    android:background="@drawable/color_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:text="+"/>
+            </LinearLayout>
+
+            <!--    저장, 취소 버튼-->
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                style="@style/Widget.AppCompat.Button.Borderless">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/cancel"
+                    android:background="@drawable/white_button"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="20sp"
+                    android:text="@string/cancel"/>
+
+                <Button
+                    android:id="@+id/save"
+                    android:background="@drawable/color_button"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="@string/save"/>
+            </LinearLayout>
+
         </LinearLayout>
+    </ScrollView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/MainColor"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
-            android:text="알림 시간"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/timeRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:visibility="gone"/>
-
-        <Button
-            android:id="@+id/addTime"
-            android:background="@drawable/color_button"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:text="+"/>
-    </LinearLayout>
-
-<!--    저장, 취소 버튼-->
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_vertical"
-        style="@style/Widget.AppCompat.Button.Borderless">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/cancel"
-            android:background="@drawable/white_button"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
-            android:textSize="20sp"
-            android:text="@string/cancel"/>
-
-        <Button
-            android:id="@+id/save"
-            android:background="@drawable/color_button"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:text="@string/save"/>
-    </LinearLayout>
-</LinearLayout>
-</ScrollView>
+    <!-- NavigationView -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/menu_navigation"/>
+</androidx.drawerlayout.widget.DrawerLayout>
