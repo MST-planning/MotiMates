@@ -61,7 +61,7 @@ class AddPurpose : AppCompatActivity() {
         //팝업 알림 시간 추가
         binding.addTime.setOnClickListener{
             //화면에 timePicker 생성
-            TimePickerDialog(this, android.R.style.Theme_DeviceDefault_Light_NoActionBar, time, 12, 0,true).show()
+            TimePickerDialog(this, android.R.style.Theme_Holo_Dialog, time, 12, 0,true).show()
         }
         adapter = TimeAdapter()
         binding.timeRecycler.layoutManager = LinearLayoutManager(this)
