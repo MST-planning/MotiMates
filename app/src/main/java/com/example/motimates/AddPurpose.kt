@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.motimates.databinding.AddPurposeBinding
 import java.util.Calendar
@@ -24,6 +25,15 @@ class AddPurpose : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = AddPurposeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //네비게이션, 툴바
+        setSupportActionBar(binding.toolbar)
+        val toggle = ActionBarDrawerToggle(
+            this, binding.drawer, binding.toolbar,
+            R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+        binding.drawer.addDrawerListener(toggle)
+        toggle.syncState()
 
         //목표 기간 설정
         binding.period.setOnCheckedChangeListener { group, checkedId ->
