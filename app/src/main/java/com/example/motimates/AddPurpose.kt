@@ -31,23 +31,23 @@ class AddPurpose : AppCompatActivity() {
             {
                 R.id.month -> {
                     binding.customText.visibility = View.GONE
-                    //한달짜리 목표가 됩니다.
+                    calendar.add(Calendar.DAY_OF_MONTH, 30)
                 }
                 R.id.year -> {
                     binding.customText.visibility = View.GONE
-                    //일년
+                    calendar.add(Calendar.DAY_OF_YEAR, 1)
                 }
                 R.id.every -> {
                     binding.customText.visibility = View.GONE
-                    //매일
+                    calendar.add(Calendar.DAY_OF_YEAR, 10)
                 }
                 R.id.custom -> {
-                    //DateaPicker 화면에 생성 -> calendar과 datetext에 선택 날짜 저장
                     DatePickerDialog(this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)).show()
                 } } }
 
         //저장 버튼 -> 메인 엑티비티로 이동
         binding.save.setOnClickListener{
+            save()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
@@ -88,5 +88,11 @@ class AddPurpose : AppCompatActivity() {
         //times의 원소가 1개 이상일 때만 visible로 변경
         if (times.isNotEmpty())
             binding.timeRecycler.visibility = View.VISIBLE
+    }
+
+    private fun save()
+    {
+        val purpose = Purpose(binding.title.toString(), binding.content.toString(), adapter.currentList.toList(), calendar)
+        Purpose.commit(purpose)
     }
 }
