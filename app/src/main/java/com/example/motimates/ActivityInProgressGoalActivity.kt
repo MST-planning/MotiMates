@@ -42,18 +42,20 @@ class ActivityInProgressGoalActivity : AppCompatActivity() {
         val mytable = findViewById<TableLayout>(R.id.tableLayout)
         val db = DBHelper(this).readableDatabase
         val cursor = db.rawQuery("SELECT distinct TodayGoalList.date FROM TodayGoalList WHERE goal = '$goalTitle'", null)
-        var count=0
+        // db 열고 내용을 읽어옴
+        var count=0 //인증한 날짜 수, row, cell에 이용
         if(cursor !=null && cursor.moveToFirst()){
             do{
                 Log.d("로그처리", "저장된 데이터 존재 : ${cursor.getString(0)}") //로그처리, 수행한 날짜를 확인
-                val row= mytable[0] as TableRow //추후 확장(count%6==0일 경우 줄바꿈)
-                val cell = row[count++] as ImageView
-                cell.setImageResource(R.drawable.success)
+                val row= mytable[count/6] as TableRow // 0<=row (<=5 : 추후 확장)
+                val cell = row[count%6] as ImageView // 0<=cell<=5
+                cell.setImageResource(R.drawable.success) //이미지 설정
                 val text= cursor.getString(0)
                 cell.setOnClickListener(){
                     Toast.makeText(this, "$text", Toast.LENGTH_SHORT).show()
-                } //클릭시 토스트 메세지로 날짜 출력
-            }while(cursor.moveToNext())
+                } //온클릭, 클릭시 토스트 메세지로 날짜 출력
+                count+=1
+            }while(cursor.moveToNext()) //db의 다음 행으로 이동
             db.close()
         }
 //        추가된 부분!!!(끝)
