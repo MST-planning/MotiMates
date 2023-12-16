@@ -2,11 +2,17 @@ package com.example.motimates
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TableLayout
+import android.widget.TableRow
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
@@ -30,6 +36,27 @@ class ActivityInProgressGoalActivity : AppCompatActivity() {
 
         titleTextView.text = goalTitle
         detailsTextView.text = goalDetails
+
+//        추가된 부분!!!(시작)
+        //인증시 도장 출력
+        val mytable = findViewById<TableLayout>(R.id.tableLayout)
+        val db = DBHelper(this).readableDatabase
+        val cursor = db.rawQuery("SELECT distinct TodayGoalList.date FROM TodayGoalList WHERE goal = '$goalTitle'", null)
+        var count=0
+        if(cursor !=null && cursor.moveToFirst()){
+            do{
+                Log.d("로그처리", "저장된 데이터 존재 : ${cursor.getString(0)}") //로그처리, 수행한 날짜를 확인
+                val row= mytable[0] as TableRow //추후 확장(count%6==0일 경우 줄바꿈)
+                val cell = row[count++] as ImageView
+                cell.setImageResource(R.drawable.success)
+                val text= cursor.getString(0)
+                cell.setOnClickListener(){
+                    Toast.makeText(this, "$text", Toast.LENGTH_SHORT).show()
+                } //클릭시 토스트 메세지로 날짜 출력
+            }while(cursor.moveToNext())
+            db.close()
+        }
+//        추가된 부분!!!(끝)
 
         // 목표 인증하러 가기 버튼
         val certificationButton = findViewById<Button>(R.id.certificationButton)
