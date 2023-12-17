@@ -45,9 +45,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"
+            android:exported="false" />
         <activity
             android:name=".ActivityInProgressGoalActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".GoalListActivity"
             android:exported="false" />
