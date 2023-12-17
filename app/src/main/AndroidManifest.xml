@@ -66,9 +66,6 @@
             android:name=".MyGarden"
             android:exported="false" />
         <activity
-            android:name=".AchievementMain"
-            android:exported="false" />
-        <activity
             android:name=".Achievement"
             android:exported="false" />
         <activity
