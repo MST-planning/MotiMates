@@ -57,6 +57,8 @@ class AddPurpose : AppCompatActivity() {
 
         //저장 버튼 -> 메인 엑티비티로 이동
         binding.save.setOnClickListener{
+            //알림 테스트
+            //알림테스트 끝
             save()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

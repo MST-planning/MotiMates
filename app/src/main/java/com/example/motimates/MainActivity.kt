@@ -1,16 +1,27 @@
 package com.example.motimates
 
 import android.app.Activity
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.motimates.EditProfileActivity.Companion.EDIT_PROFILE_REQUEST_CODE
 import com.example.motimates.MyGarden
@@ -63,7 +74,12 @@ class MainActivity : AppCompatActivity() {
         viewFlowerGardenButton = findViewById(R.id.viewFlowerGardenButton)
         editProfileButton = findViewById(R.id.editProfileButton)
 
+        notificationManager = getSystemService(android.content.Context.NOTIFICATION_SERVICE) as NotificationManager
+
         updateWelcomeMessage()
+        permissionCheck()
+        makeChannel()
+        notify("일단제목", "일단 내용")
 
         addGoalButton.setOnClickListener {
             startActivity(Intent(this, AddPurpose::class.java))
@@ -143,5 +159,61 @@ class MainActivity : AppCompatActivity() {
         val preferences = getSharedPreferences("user_data", Context.MODE_PRIVATE)
         val nickname = preferences.getString("nickname", "")
         greetingTextView2.text = "$nickname 님!"
+    }
+
+//  채널 설정
+    private val channelId = "stateBar"
+    private val channelName = "상태바 알림"
+    private val channelDescription = "목표 수행을 재촉하는 알림을 보냅니다."
+
+    lateinit var notificationManager : NotificationManager
+
+    private fun makeChannel() {
+        Log.d("notification", "create NotifyChannel")
+
+        //채널 생성
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val channel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT)
+            channel.description = channelDescription
+
+            notificationManager.createNotificationChannel(channel)}
+    }
+
+    fun notify(title: String, content:String)
+    {
+        //빌더 생성
+        lateinit var builder: NotificationCompat.Builder
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            builder = NotificationCompat.Builder(this, channelId)
+        else
+            builder = NotificationCompat.Builder(this)
+
+        builder.setSmallIcon(R.drawable.logo)
+            .setContentTitle(title)
+            .setContentText(content)
+
+        notificationManager.notify(11, builder.build())
+
+        Log.d("일단", "실행은 되니")
+    }
+
+    private fun permissionCheck()
+    {
+        val permissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions())
+        {
+            if (it.all{permission -> !permission.value})
+                Toast.makeText(this, "앱 설정 > 권한에서 알림 권한을 허용해주세요", Toast.LENGTH_LONG).show()}
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
+        {
+            if (ContextCompat.checkSelfPermission(this, "manifest.permission.POST_NOTIFICATIONS")
+                == PackageManager.PERMISSION_DENIED)
+                permissionLauncher.launch(
+                    arrayOf("manifest.permission.POST_NOTIFICATION")
+                )
+
+        }
     }
 }
