@@ -1,13 +1,16 @@
 package com.example.motimates
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
 class MyFlower : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_flower)
@@ -15,6 +18,10 @@ class MyFlower : AppCompatActivity() {
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawer)
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         val navView = findViewById<NavigationView>(R.id.nav_view)
+
+        val image= findViewById<ImageView>(R.id.flower)
+        val flowerintent= intent.getIntExtra("flowerimage", R.drawable.example_image) //사진 받아오기
+        image.setImageResource(flowerintent)
 
         setSupportActionBar(toolbar)
         val toggle = ActionBarDrawerToggle(

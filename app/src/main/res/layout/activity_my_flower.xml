@@ -9,8 +9,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="bottom">
+        android:orientation="vertical">
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -24,7 +23,7 @@
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="오늘 수행한 목표"
+            android:text="나의 꽃"
             android:textSize="30dp"
             android:textColor="#85C567"
             android:textStyle="bold"
@@ -44,17 +43,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="30dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp">
             <ImageView
-                android:layout_width="130sp"
-                android:layout_height="200sp"
+                android:id="@+id/flower"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_gravity="center"
                 android:src="@drawable/example_image"/> //꽃이 들어갈 자리
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="180dp"
                 android:background="@drawable/layout_edge"
                 android:orientation="vertical"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:layout_marginLeft="30dp">
                 <TextView
                     android:layout_width="match_parent"
@@ -66,7 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="목표 내용이 들어갈 자리"
+                    android:text="10시 취침하기"
                     android:textColor="@color/MainColor"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -78,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="목표 시작일이 들어갈 자리"
+                    android:text="2023.11.11."
                     android:textColor="@color/MainColor"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -90,26 +93,280 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="목표 완수일이 들어갈 자리"
+                    android:text="2023.12.11."
                     android:textColor="@color/MainColor"/>
             </LinearLayout>
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
             android:text="수행 캘린더"
             android:textStyle="bold"
             android:textSize="15sp"
             android:gravity="center"/>
-        <CalendarView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:background="@drawable/layout_edge"
-            android:layout_gravity="center">
-        </CalendarView>
+        <TableLayout
+            android:layout_width="350dp"
+            android:layout_height="300dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/table_border">
+            <TableRow>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+            </TableRow>
+
+            <TableRow>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+            </TableRow>
+
+            <TableRow>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+            </TableRow>
+            <TableRow>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+            </TableRow>
+            <TableRow>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:src="@drawable/success"
+                    android:background="@android:color/white"/>
+            </TableRow>
+        </TableLayout>
+
     </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
