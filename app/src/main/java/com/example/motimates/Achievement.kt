@@ -200,6 +200,49 @@ class Achievement : AppCompatActivity() {
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.main_page -> {
+                    // 홈 화면으로 이동입
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.add_ach -> {
+                    // 목표 추가 화면으로 이동
+                    startActivity(Intent(this, AddPurpose::class.java))
+                    true
+                }
+                R.id.look_ach -> {
+                    // 목표 보기 화면으로 이동
+                    startActivity(Intent(this, GoalListActivity::class.java))
+                    true
+                }
+                R.id.look_garden-> {
+                    // 꽃밭 보기 화면으로 이동
+                    startActivity(Intent(this, MyGarden::class.java))
+                    true
+                }
+                R.id.member_info-> {
+                    // 회원 정보 수정 화면으로 이동
+                    startActivity(Intent(this, EditProfileActivity::class.java))
+                    true
+                }
+                R.id.signup -> {
+                    startActivity(Intent(this, Signup::class.java))
+                    true
+                }
+                R.id.signin -> {
+                    startActivity(Intent(this, Signin::class.java))
+                    true
+                }
+                R.id.logout -> {
+                    startActivity(Intent(this, Logout::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     //이미지 크기 계산 함수
