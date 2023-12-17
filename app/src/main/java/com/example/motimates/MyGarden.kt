@@ -4,15 +4,26 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.motimates.databinding.ActivityMyGardenBinding
 import com.google.android.material.navigation.NavigationView
+import org.w3c.dom.Text
 
 class MyGarden : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_garden)
+
+        val binding= ActivityMyGardenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.recyclerview.layoutManager= GridLayoutManager(this, 3)
+        binding.recyclerview.adapter= FlowerAdapter(2) //꽃 리스트 개수 하드코딩(...)
+
 
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawer)
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
