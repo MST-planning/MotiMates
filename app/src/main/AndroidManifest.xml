@@ -46,9 +46,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ActivityInProgressGoalActivity"
             android:exported="true" />
-        <activity android:name=".ActivityInProgressGoalActivity" />
         <activity
             android:name=".GoalListActivity"
             android:exported="false" />
@@ -76,7 +75,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="app"
+            android:authorities="com.example.motimates.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
