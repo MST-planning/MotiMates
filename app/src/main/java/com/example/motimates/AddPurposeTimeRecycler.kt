@@ -22,13 +22,20 @@ class TimeAdapter: ListAdapter<List<Int>, RecyclerView.ViewHolder>(diffUtil) {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding = (holder as AddPurposeTimeRecycler).binding
+        val item = getItem(position)
         binding.timeString.text = "${getItem(position)[0]}시 ${getItem(position)[1]}분"
-        Log.d("submit", "${itemCount}")
+
+        binding.del.setOnClickListener{
+            val newList = currentList.toMutableList()
+            newList.remove(item)
+            submitList(newList)
+        }
     }
 
     override fun submitList(list: MutableList<List<Int>>?) {
-        Log.d("submit", "submit 호출")
+        Log.d("currentList", "submit 호출")
         super.submitList(list)
+        Log.d("currentList", "원소 수는 ${currentList.count()}")
     }
 
     companion object {
