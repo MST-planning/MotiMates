@@ -1,35 +1,38 @@
 package com.example.motimates
 
+import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
-import android.view.Menu
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.FileProvider
-import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.motimates.databinding.ActivityAchievementBinding
 import com.google.android.material.navigation.NavigationView
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 
 class Achievement : AppCompatActivity() {
+    var uploaded = 0 //사진이 업로드 되었는지 확인하는 변수
+
+    @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
+
         val binding = ActivityAchievementBinding.inflate(layoutInflater) //oncreate 외부에서도 뷰바인딩 사용
         lateinit var filePath: String
 
@@ -37,33 +40,89 @@ class Achievement : AppCompatActivity() {
         setContentView(R.layout.activity_achievement)
         setContentView(binding.root)
 
-        //갤러리 앱 연동
-        val requestGalleryLauncher= registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            try {
-                val calRatio= calculateInSampleSize(it.data?.data!!,
-                    resources.getDimensionPixelSize(R.dimen.imgSize),
-                    resources.getDimensionPixelSize(R.dimen.imgSize))
-                val option= BitmapFactory.Options()
-                option.inSampleSize= calRatio
+        val title = findViewById<TextView>(R.id.titleTextView)
+        val target = findViewById<TextView>(R.id.target_content)
 
-                //이미지 로딩
-                var inputStream= contentResolver.openInputStream(it.data?.data!!)
-                val bitmap= BitmapFactory.decodeStream(inputStream, null, option)
-                inputStream?.close()
-                inputStream = null
+        val selectedTitle = intent.getStringExtra("goalTitle")
+        title.setText(selectedTitle) //인텐트로 제목 받아오기
+        var detail = intent.getStringExtra("goalDetails")
+        if (detail != null) {
+            if (detail.contains(",")) {
+                detail = detail.replace(",", "\n-") //세부사항에 ,가 있으면 줄바꿈으로 변경
+            }
+            target.setText(detail)
+        } //인텐트로 세부사항 받아오기
 
-                bitmap?.let {
-                    binding.proofImage.setImageBitmap(bitmap)
-                }?: let{
-                    Log.d("로그처리", "이미지 로딩 실패")
-                }
-            }catch (e: Exception){
-                e.printStackTrace()
-            } // 예외 발생시 throw
+        val today = findViewById<TextView>(R.id.dateTextView)
+        val current = Calendar.getInstance().getTime()
+        val formatter = SimpleDateFormat("yyyy년 MM월 dd일")
+        val formattedDate = formatter.format(current)
+
+        val formatter2 = SimpleDateFormat("yyyyMMdd")
+        val formattedDate2 = formatter2.format(current)
+        today.setText(formattedDate) //오늘 날짜 텍스트뷰에 출력
+
+        //ㅅㅏ진이 있다면 출력
+        val db = DBHelper(this).readableDatabase
+        val cursor= db.rawQuery("select * from TodayGoalList " +
+                "where TodayGoalList.date='$formattedDate2' and TodayGoalList.Goal='$selectedTitle'", null)
+        if (cursor != null && cursor.moveToFirst()) {
+            val image = cursor.getBlob(cursor.getColumnIndex("image"))
+            val bitmap = BitmapFactory.decodeByteArray(image, 0, image.size)
+            binding.proofImage.setImageBitmap(bitmap)
+            Log.d("로그처리", "이미지 로딩 성공!!!!!!")
+            db.close()
         }
 
+        //갤러리 앱 연동
+        val requestGalleryLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                try {
+                    val calRatio = calculateInSampleSize(
+                        it.data?.data!!,
+                        resources.getDimensionPixelSize(R.dimen.imgSize),
+                        resources.getDimensionPixelSize(R.dimen.imgSize)
+                    )
+                    val option = BitmapFactory.Options()
+                    option.inSampleSize = calRatio
+
+                    //이미지 로딩
+                    var inputStream = contentResolver.openInputStream(it.data?.data!!)
+                    val bitmap = BitmapFactory.decodeStream(inputStream, null, option)
+                    inputStream?.close()
+                    inputStream = null
+
+                    bitmap?.let {
+                        binding.proofImage.setImageBitmap(bitmap)
+
+                        //db에 이미지와 내용 저장
+                        val byteArrayInputStream= ByteArrayOutputStream()
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayInputStream)
+                        val imageinByte: ByteArray = byteArrayInputStream.toByteArray()
+
+                        val values= ContentValues().apply{
+                            put("goal", selectedTitle)
+                            put("date", formattedDate2)
+                            put("image", imageinByte)
+                        }
+
+                        val db = DBHelper(this).writableDatabase
+                        db.insert("TodayGoalList", null, values)
+                        Log.d("로그처리", "저장성공(갤러리): $selectedTitle-$formattedDate2")
+                        db.close()
+                    } ?: let {
+                        Log.d("로그처리", "이미지 로딩 실패")
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                } // 예외 발생시 throw
+                dialog() //인증 완료 다이얼로그
+            }
+
         //카메라 앱 연동
-        val requestCameraFileLauncher= registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        val requestCameraFileLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) {
             val calRatio = calculateInSampleSize(
                 Uri.fromFile(File(filePath)),
                 resources.getDimensionPixelSize(R.dimen.imgSize),
@@ -75,57 +134,53 @@ class Achievement : AppCompatActivity() {
             bitmap?.let {
                 binding.proofImage.setImageBitmap(bitmap)
             }
+
+            //이미지와 내용을 저장
+            val byteArrayInputStream= ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayInputStream)
+            val imageinByte: ByteArray = byteArrayInputStream.toByteArray()
+
+            val values= ContentValues().apply{
+                put("goal", selectedTitle)
+                put("date", formattedDate2)
+                put("image", imageinByte)
+            }
+
+            val db = DBHelper(this).writableDatabase
+            db.insert("TodayGoalList", null, values)
+            Log.d("로그처리", "저장성공(카메라): $selectedTitle-$formattedDate2")
+            db.close()
+
+            dialog() //인증 완료 다이얼로그
         }
 
         //카메라 버튼
         binding.cameraButton.setOnClickListener {
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(
-                        android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    ) == PackageManager.PERMISSION_GRANTED
-                ) {
-                    Log.d("tag", "권한 설정 완료")
-                    try {
-
-                        Log.d("로그처리", "카메라 선택")
-                        val timeStamp: String =
-                            SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-                        val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-                        val file = File.createTempFile(
-                            "JPEG_${timeStamp}_",
-                            ".jpg",
-                            storageDir
-                        )
-                        filePath = file.absolutePath
-                        val photoURI: Uri = FileProvider.getUriForFile(
-                            this,
-                            "com.example.motimates.fileprovider",
-                            file
-                        )
-                        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                        requestCameraFileLauncher.launch(intent)
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }
-                else{
-                    Log.d("tag", "권한 설정 요청")
-                    ActivityCompat.requestPermissions(
-                        this,
-                        arrayOf(
-                            android.Manifest.permission.CAMERA,
-                            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-                        ),
-                        1
-                    )
-                }
-            }
+            Log.d("로그처리", "카메라 선택")
+            uploaded += 1 //사진 업로드 확인
+            val timeStamp: String =
+                SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+            val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            val file = File.createTempFile(
+                "JPEG_${timeStamp}_",
+                ".jpg",
+                storageDir
+            )
+            filePath = file.absolutePath
+            val photoURI: Uri = FileProvider.getUriForFile(
+                this,
+                "com.example.motimates.fileprovider",
+                file
+            )
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+            requestCameraFileLauncher.launch(intent)
         }
 
         //갤러리 버튼
         binding.galleryButton.setOnClickListener {
             Log.d("로그처리", "갤러리 선택")
+            uploaded += 1 //사진 업로드 확인
             val intent = Intent(
                 Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -135,18 +190,8 @@ class Achievement : AppCompatActivity() {
         }
 
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawer)
-        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         val navView = findViewById<NavigationView>(R.id.nav_view)
-        val title= findViewById<TextView>(R.id.titleTextView)
-
-        val selectedTitle = intent.getStringExtra("goalTitle")
-        title.setText(selectedTitle) //인텐트로 제목 받아오기
-
-        val today= findViewById<TextView>(R.id.dateTextView)
-        val current= Calendar.getInstance().getTime()
-        val formatter= SimpleDateFormat("yyyy년 MM월 dd일")
-        val formattedDate= formatter.format(current)
-        today.setText(formattedDate) //오늘 날짜 텍스트뷰에 출력
 
         setSupportActionBar(toolbar)
         val toggle = ActionBarDrawerToggle(
@@ -158,7 +203,7 @@ class Achievement : AppCompatActivity() {
     }
 
     //이미지 크기 계산 함수
-    private fun calculateInSampleSize(fileUri: Uri, reqWidth: Int, reqHeight: Int) :Int {
+    private fun calculateInSampleSize(fileUri: Uri, reqWidth: Int, reqHeight: Int): Int {
         val options = BitmapFactory.Options()
         options.inJustDecodeBounds = true
         try {
@@ -179,5 +224,27 @@ class Achievement : AppCompatActivity() {
             }
         }
         return inSampleSize
+    }
+
+    private fun dialog() {
+        if (uploaded == 1) {
+            AlertDialog.Builder(this)
+                .setTitle("인증 완료")
+                .setMessage("오늘도 한 걸음 목표에 가까워졌네요^^")
+                .setPositiveButton("목록으로 돌아가기", DialogInterface.OnClickListener { dialog, which ->
+                    val intent = Intent(this, GoalListActivity::class.java)
+                    startActivity(intent)
+                })
+                .show()
+        } else if (uploaded > 1) {
+            AlertDialog.Builder(this)
+                .setTitle("수정 완료")
+                .setMessage("인증사진이 수정되었습니다.")
+                .setPositiveButton("목록으로 돌아가기", DialogInterface.OnClickListener { dialog, which ->
+                    val intent = Intent(this, GoalListActivity::class.java)
+                    startActivity(intent)
+                })
+                .show()
+        }
     }
 }
