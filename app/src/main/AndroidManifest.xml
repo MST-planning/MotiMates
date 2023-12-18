@@ -50,7 +50,7 @@
             android:exported="false"/>
         <activity
             android:name=".ActivityInProgressGoalActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".GoalListActivity"
             android:exported="false" />
@@ -62,9 +62,6 @@
             android:exported="false" />
         <activity
             android:name=".MyGarden"
-            android:exported="false" />
-        <activity
-            android:name=".AchievementMain"
             android:exported="false" />
         <activity
             android:name=".Achievement"
