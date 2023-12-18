@@ -13,15 +13,15 @@
         android:title="꽃밭 보기"
         android:icon="@android:drawable/ic_menu_my_calendar"/>
     <item android:id="@+id/member_info"
-        android:title="회원 정보"
-        android:icon="@android:drawable/ic_menu_myplaces"/>
+        android:title="회원 정보 수정"
+        android:icon="@android:drawable/ic_menu_edit"/>
     <item android:id="@+id/signup"
         android:title="회원가입"
-        android:icon="@android:drawable/ic_menu_myplaces"/>
+        android:icon="@android:drawable/ic_input_add"/>
     <item android:id="@+id/signin"
         android:title="로그인"
-        android:icon="@android:drawable/ic_menu_myplaces"/>
+        android:icon="@android:drawable/ic_menu_info_details"/>
     <item android:id="@+id/logout"
         android:title="로그아웃"
-        android:icon="@android:drawable/ic_menu_myplaces"/>
+        android:icon="@android:drawable/ic_lock_power_off"/>
 </menu>
