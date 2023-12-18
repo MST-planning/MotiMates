@@ -79,6 +79,7 @@ class MainActivity : AppCompatActivity() {
 
         updateWelcomeMessage()
         permissionCheck()
+        makeChannel()
 
         addGoalButton.setOnClickListener {
             startActivity(Intent(this, AddPurpose::class.java))
