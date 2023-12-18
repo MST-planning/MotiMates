@@ -1,11 +1,17 @@
 package com.example.motimates
 
+import android.app.AlarmManager
 import android.app.DatePickerDialog
+import android.app.PendingIntent
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.motimates.databinding.AddPurposeBinding
@@ -17,7 +23,9 @@ class AddPurpose : AppCompatActivity() {
     //해당 목표에 대한 알림 시간 리스트
     private var times = mutableListOf<List<Int>>()
     private var datetext = "string"
-
+    //객체로 세팅
+    private lateinit var purpose: Purpose
+    //기능을 위한 객체
     private lateinit var binding: AddPurposeBinding
     private lateinit var adapter: TimeAdapter
 
@@ -41,7 +49,7 @@ class AddPurpose : AppCompatActivity() {
             {
                 R.id.month -> {
                     binding.customText.visibility = View.GONE
-                    calendar.add(Calendar.DAY_OF_MONTH, 30)
+                    calendar.add(Calendar.DAY_OF_MONTH, 1)
                 }
                 R.id.year -> {
                     binding.customText.visibility = View.GONE
@@ -57,8 +65,6 @@ class AddPurpose : AppCompatActivity() {
 
         //저장 버튼 -> 메인 엑티비티로 이동
         binding.save.setOnClickListener{
-            //알림 테스트
-            //알림테스트 끝
             save()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -104,7 +110,61 @@ class AddPurpose : AppCompatActivity() {
 
     private fun save()
     {
-        val purpose = Purpose(binding.title.toString(), binding.content.toString(), adapter.currentList.toList(), calendar)
+        purpose = Purpose(binding.title.text.toString(), binding.content.text.toString(), adapter.currentList.toList(), calendar)
         Purpose.commit(purpose)
+
+        var i = 0;
+
+        for (time in purpose.getTimes())
+        {
+            var cal = Calendar.getInstance()
+
+            cal.set(Calendar.HOUR_OF_DAY, time[0])
+            cal.set(Calendar.MINUTE, time[1])
+            cal.set(Calendar.SECOND, 0)
+            if (cal.before(Calendar.getInstance()))
+                cal.add(Calendar.DATE, 1)
+
+            setAlarm(cal, i)
+            i++
+        }
+    }
+
+    private fun setAlarm(cal: Calendar, num: Int)
+    {
+        Log.d("alarm", "setAlarm 호출")
+        val alarmNum = purpose.getCode() * 100 + num
+
+        val manager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this, AlarmReceiver::class.java)
+        intent.putExtra("code", purpose.getCode())
+        val pIntent = PendingIntent.getBroadcast(this, alarmNum, intent, PendingIntent.FLAG_MUTABLE)
+        Log.d("alarm", "${cal.timeInMillis}m ${cal.toString()}")
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && manager.canScheduleExactAlarms())
+        {
+            manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, cal.timeInMillis, pIntent)
+            Log.d("alarm", "매니저한테 부탁도 했고")
+        }
+        else Toast.makeText(this, "앱 설정 > 권한 탭에서 스케쥴 권한을 허용해주세요", Toast.LENGTH_LONG).show()
+
+
+        Log.d("alarm", "setAlarm 종료")
+    }
+
+    fun delAlarm(p:Purpose)
+    {
+        val code = p.getCode()
+
+        val manager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this, AlarmReceiver::class.java)
+
+        for(i in 1 until p.getTimes().count())
+        {
+            val c = code * 100 + i
+            val pendingIntent = PendingIntent.getBroadcast(this, c, intent, PendingIntent.FLAG_IMMUTABLE)
+
+            manager.cancel(pendingIntent)
+        }
     }
 }
