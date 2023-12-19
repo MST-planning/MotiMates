@@ -21,11 +21,11 @@ class FlowerAdapter(val value: Int): RecyclerView.Adapter<RecyclerView.ViewHolde
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val flowerList= mutableListOf<Int>(R.drawable.flower1, R.drawable.flower2, R.drawable.flower3) //꽃 이미지 리스트
         val binding= (holder as FlowerViewHolder).binding
-        binding.flowerContent.setImageResource(flowerList[position%2])
+        binding.flowerContent.setImageResource(flowerList[position%3])
         // 꽃 리스트 바인딩
         binding.flowerContent.setOnClickListener(){
             val intent= Intent(holder.itemView?.context, MyFlower::class.java)
-            intent.putExtra("flowerimage", flowerList[position%2])
+            intent.putExtra("flowerimage", flowerList[position%3])
             binding.flowerContent.context.startActivity(intent)
         } //리사이클러뷰에 클릭 리스너 설정
     }
