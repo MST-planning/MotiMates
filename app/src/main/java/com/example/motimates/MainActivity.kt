@@ -1,19 +1,23 @@
 package com.example.motimates
 
-import android.app.Activity
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.ActionBar
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.motimates.EditProfileActivity.Companion.EDIT_PROFILE_REQUEST_CODE
-import com.example.motimates.MyGarden
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -38,6 +42,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navView: NavigationView
     private lateinit var toolbar: Toolbar
 
+    companion object{
+        lateinit var instance:MainActivity
+        fun getMain():MainActivity = instance
+    }
+
     override fun onResume() {
         super.onResume()
         // EditProfileActivity에서 돌아왔을 때, 데이터 확인
@@ -50,6 +59,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        instance = this;
+
         auth = Firebase.auth
 
         profileImageView = findViewById(R.id.profileImageView)
@@ -63,7 +75,11 @@ class MainActivity : AppCompatActivity() {
         viewFlowerGardenButton = findViewById(R.id.viewFlowerGardenButton)
         editProfileButton = findViewById(R.id.editProfileButton)
 
+        notificationManager = getSystemService(android.content.Context.NOTIFICATION_SERVICE) as NotificationManager
+
         updateWelcomeMessage()
+        permissionCheck()
+        makeChannel()
 
         addGoalButton.setOnClickListener {
             startActivity(Intent(this, AddPurpose::class.java))
@@ -143,5 +159,58 @@ class MainActivity : AppCompatActivity() {
         val preferences = getSharedPreferences("user_data", Context.MODE_PRIVATE)
         val nickname = preferences.getString("nickname", "")
         greetingTextView2.text = "$nickname 님!"
+    }
+
+//  채널 설정
+    private val channelId = "stateBar"
+    private val channelName = "상태바 알림"
+    private val channelDescription = "목표 수행을 재촉하는 알림을 보냅니다."
+
+    lateinit var notificationManager : NotificationManager
+
+    private fun makeChannel() {
+        Log.d("notification", "create NotifyChannel")
+
+        //채널 생성
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val channel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT)
+            channel.description = channelDescription
+
+            notificationManager.createNotificationChannel(channel)}
+    }
+
+    fun notify(content:String)
+    {
+        val title = "Motimate: 지금 할 일이 있어요!"
+        Log.d("Notifi Shape", "title: $title, content: $content")
+
+        //빌더 생성
+        lateinit var builder: NotificationCompat.Builder
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            builder = NotificationCompat.Builder(this, channelId)
+        else
+            builder = NotificationCompat.Builder(this)
+
+        builder.setSmallIcon(R.drawable.launcherlogo)
+            .setContentTitle(title)
+            .setContentText(content)
+
+        notificationManager.notify(11, builder.build())
+    }
+
+    private fun permissionCheck()
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
+        {
+            val stateNo = ContextCompat.checkSelfPermission(this, "android.permission.POST_NOTIFICATIONS")
+            val stateAl = ContextCompat.checkSelfPermission(this, "android.permission.POST_NOTIFICATIONS")
+
+            if (stateNo == PackageManager.PERMISSION_DENIED)
+                Toast.makeText(this, "앱 설정 > 권한 탭에서 알림 권한을 허용해주세요", Toast.LENGTH_LONG).show()
+
+            if (stateAl == PackageManager.PERMISSION_DENIED)
+                Toast.makeText(this, "앱 설정 > 권한 탭에서 스케쥴 권한을 허용해주세요", Toast.LENGTH_LONG).show()
+        }
     }
 }
